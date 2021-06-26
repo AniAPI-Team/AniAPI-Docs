@@ -1,0 +1,52 @@
+---
+sidebar_position: 1
+slug: /
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Introduction
+
+Welcome to AniAPI official documentation.
+Our API follows **[REST](https://en.wikipedia.org/wiki/Representational_state_transfer)** architecture, returns **[JSON-Encoded](https://www.json.org/json-en.html)** responses using standard HTTP response codes.
+Each response will be formatted like following:
+
+```js title="Example response"
+{
+    "status_code": 200, // The response HTTP status code
+    "message": "Anime found", // An arbitrary message indicating response content
+    "data": {
+        "anilist_id": 1,
+        "mal_id": 1,
+        "format": 0,
+        "status:": 0,
+        "titles": {
+            "en": "Cowboy Bebop",
+            "jp": "カウボーイビバップ"
+        },
+        // ...
+        "id": 0
+    }, // The response JSON-Encoded content
+    "version": "1" // The response API version
+}
+```
+
+We also support **[OAuth](https://en.wikipedia.org/wiki/OAuth)** as the main authentication system.
+You can find more information in **[Authentication](authentication)**.
+
+```curl title="BASE URL"
+https://aniapi.com/api
+```
+
+## Official client libraries
+
+<Tabs
+    defaultValue="dotnet"
+    values={[
+        { label: '.NET', value: 'dotnet' },
+        { label: 'JS', value: 'js' }
+    ]}>
+    <TabItem value="dotnet"><pre><code>nuget install AniAPI-NET</code></pre></TabItem>
+    <TabItem value="js"><pre><code>npm install --save AniAPI-JS</code></pre></TabItem>
+</Tabs>
