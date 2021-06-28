@@ -35,11 +35,11 @@ module.exports = {
           label: 'Blog',
           position: 'left'
         },
-        {
+        /*{
           to: 'login',
           label: 'Login',
           position: 'right'
-        },
+        },*/
         {
           to: 'https://github.com/AniAPI-Team/AniAPI',
           prependBaseUrlToHref: false,
