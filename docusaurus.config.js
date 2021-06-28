@@ -31,7 +31,7 @@ module.exports = {
           label: 'Docs'
         },
         {
-          to: '/blog',
+          to: '/blog/',
           label: 'Blog',
           position: 'left'
         },
