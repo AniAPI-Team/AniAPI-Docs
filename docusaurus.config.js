@@ -31,16 +31,21 @@ module.exports = {
           label: 'Docs'
         },
         {
-          to: '/blog', 
+          to: '/blog',
           label: 'Blog',
           position: 'left'
+        },
+        {
+          to: 'login',
+          label: 'Login',
+          position: 'right'
         },
         {
           to: 'https://github.com/AniAPI-Team/AniAPI',
           prependBaseUrlToHref: false,
           className: 'navbar-github-link',
           position: 'right'
-        },
+        }
       ],
     },
     footer: {

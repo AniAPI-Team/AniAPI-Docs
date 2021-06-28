@@ -14,9 +14,9 @@ Each response will be formatted like following:
 
 ```js title="Example response"
 {
-    "status_code": 200, // The response HTTP status code
-    "message": "Anime found", // An arbitrary message indicating response content
-    "data": {
+    "status_code": 200,         // The response HTTP status code
+    "message": "Anime found",   // An arbitrary message indicating response content
+    "data": {                   // The response JSON-Encoded content
         "anilist_id": 1,
         "mal_id": 1,
         "format": 0,
@@ -27,8 +27,8 @@ Each response will be formatted like following:
         },
         // ...
         "id": 0
-    }, // The response JSON-Encoded content
-    "version": "1" // The response API version
+    },
+    "version": "1"              // The response API version
 }
 ```
 
@@ -36,7 +36,7 @@ We also support **[OAuth](https://en.wikipedia.org/wiki/OAuth)** as the main aut
 You can find more information in **[Authentication](authentication)**.
 
 ```curl title="BASE URL"
-https://aniapi.com/api
+https://api.aniapi.com
 ```
 
 ## Official client libraries
@@ -47,6 +47,6 @@ https://aniapi.com/api
         { label: '.NET', value: 'dotnet' },
         { label: 'JS', value: 'js' }
     ]}>
-    <TabItem value="dotnet"><pre><code>nuget install AniAPI-NET</code></pre></TabItem>
-    <TabItem value="js"><pre><code>npm install --save AniAPI-JS</code></pre></TabItem>
+    <TabItem value="dotnet"><pre><code className="language-curl">nuget install AniAPI-NET</code></pre></TabItem>
+    <TabItem value="js"><pre><code className="language-curl">npm install --save AniAPI-JS</code></pre></TabItem>
 </Tabs>

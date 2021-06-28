@@ -12,12 +12,13 @@
   --ifm-navbar-link-color: #f5f6f7;
   --ifm-navbar-link-hover-color: #AD6DD3;
   --ifm-color-primary: #8D46B8;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary-dark: #7C3EA3;
+  --ifm-color-primary-darker: #653285;
+  --ifm-color-primary-darkest: #4F2768;
+  --ifm-color-primary-light: #AD6DD3;
+  --ifm-color-primary-lighter: #C291DE;
+  --ifm-color-primary-lightest: #D3B0E8;
+  --ifm-button-color: white;
   --ifm-code-font-size: 95%;  
 }
 
@@ -87,4 +88,22 @@ html[data-theme='dark'] .footer--dark {
 
 .get-started-section .button {
   text-transform: uppercase;
+}
+
+.hero {
+  background-color: var(--ifm-navbar-background) !important;
+}
+
+.hero__logo {
+  max-height: 128px;
+}
+
+.hero__subtitle {
+  margin-top: 36px;
+  font-weight: 300;
+  color: white;
+}
+
+.language-curl span {
+  color: rgb(98, 114, 164) !important;
 }
