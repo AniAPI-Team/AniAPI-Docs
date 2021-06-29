@@ -2,6 +2,9 @@
 sidebar_position: 2
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Authentication
 
 AniAPI uses **[JSON Web Tokens](https://jwt.io/introduction)** to authenticate requests. 
@@ -12,9 +15,34 @@ You can obtain your JWT on **[your profile page](../profile)**.
 
 Authentication on secured endpoints is managed with **HTTP Bearer Auth**, which expect the use of `Authorization` HTTP header:
 
-```curl
-Authorization: Bearer <YOUR_JWT>
-```
+<Tabs
+    defaultValue="curl"
+    values={[
+        { label: 'cURL', value: 'curl' },
+        { label: 'JS', value: 'js' }
+    ]}>
+<TabItem value="curl">
+
+  ```bash
+    curl -i https://api.aniapi.com/v1/user_story -H "Authorization: Bearer YOUR_JWT"
+  ```
+
+</TabItem>
+<TabItem value="js">
+
+  ```js
+    fetch('https://api.aniapi.com/v1/user_story', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer YOUR_JWT',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    });
+  ```
+
+</TabItem>
+</Tabs>
 
 ## OAuth
 

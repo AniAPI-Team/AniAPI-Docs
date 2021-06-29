@@ -3,7 +3,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'AniAPI Documentation',
+  title: 'AniAPI',
   tagline: 'Your favourite anime WebAPI ♥',
   url: 'https://aniapi.com',
   baseUrl: '/',

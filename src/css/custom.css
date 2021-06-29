@@ -104,6 +104,6 @@ html[data-theme='dark'] .footer--dark {
   color: white;
 }
 
-.language-curl span {
+.language-http span {
   color: rgb(98, 114, 164) !important;
 }
