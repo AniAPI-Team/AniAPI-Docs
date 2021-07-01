@@ -15,7 +15,7 @@ export default function Login() {
     const user = JSON.parse(window.sessionStorage.getItem('AUTH_USER'));
 
     if (user) {
-      window.location.replace('./profile');
+      window.location.replace('/profile');
     }
   }
   catch { }
@@ -109,7 +109,7 @@ export default function Login() {
     <Layout title="Login">
       <main>
         <div className={styles.form}>
-          <img src="img/aniapi_icon.png" />
+          <img src="/img/aniapi_icon.png" />
           <form method="post">
             <input type="text"
               placeholder="Email"

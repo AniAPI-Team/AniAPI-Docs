@@ -130,7 +130,7 @@ export default function Signup() {
       <main>
         {!completed ? (
           <div className={styles.form}>
-            <img src="img/aniapi_icon.png" />
+            <img src="/img/aniapi_icon.png" />
             <form method="post">
               <input type="text"
                 placeholder="Email"
