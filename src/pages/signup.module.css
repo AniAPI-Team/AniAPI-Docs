@@ -1,0 +1,65 @@
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 82px;
+}
+
+.form {
+  padding: 24px;
+  width: 300px;
+  text-align: center;
+}
+
+form {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin: 8px 0;
+  padding: 12px 18px;
+  background-color: #151f2e;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, .6);
+  outline: none;
+  transition: .3s;
+}
+
+input:focus, input:active {
+  border-color: rgba(255, 255, 255, .3);
+  color: white;
+  transition: .3s;
+}
+
+button {
+  margin-top: 8px;
+  padding: 12px 0;
+  background-color: #8d46b8;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: .3s;
+}
+
+button:hover, button:active {
+  cursor: pointer;
+  transition: .3s;
+}
+
+.errors {
+  margin: 12px 0;
+  color: red;
+  text-align: left;
+  font-weight: 300;
+}
+
+.login {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+}

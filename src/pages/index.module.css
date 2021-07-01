@@ -5,6 +5,11 @@
  * and scoped locally.
  */
 
+.indexMain {
+  display: block !important;
+  margin-top: 0 !important;
+}
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;

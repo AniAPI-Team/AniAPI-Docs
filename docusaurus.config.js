@@ -17,6 +17,10 @@ module.exports = {
       apiKey: '',
       indexName: ''
     },*/
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: true
+    },
     navbar: {
       title: 'AniAPI Docs',
       logo: {
@@ -35,11 +39,11 @@ module.exports = {
           label: 'Blog',
           position: 'left'
         },
-        /*{
+        {
           to: 'login',
           label: 'Login',
           position: 'right'
-        },*/
+        },
         {
           to: 'https://github.com/AniAPI-Team/AniAPI',
           prependBaseUrlToHref: false,
@@ -120,4 +124,13 @@ module.exports = {
       },
     ],
   ],
+  plugins: [
+    [
+      'docusaurus2-dotenv',
+      {
+        systemvars: true,
+        silent: true
+      }
+    ]
+  ]
 };

@@ -33,7 +33,7 @@ export default function Home() {
       title=""
       description={`${siteConfig.tagline}`}>
       <HomepageHeader />
-      <main>
+      <main className={styles.indexMain}>
         <HomepageFeatures />
         <section className="get-started-section">
           <div className={styles.buttons}>
