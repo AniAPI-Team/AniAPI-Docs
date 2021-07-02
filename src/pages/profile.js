@@ -5,23 +5,28 @@ import CodeBlock from '@theme/CodeBlock';
 import styles from './profile.module.css';
 
 export default function Profile() {
-  const sideItems = document.getElementsByClassName(styles.sideItem);
-  const panels = document.getElementsByClassName(styles.panel);
-
   const anilistURL = `https://anilist.co/api/v2/oauth/authorize?client_id=${process.env.ANILIST_CLIENTID}&response_type=token`;
 
+  let sideItems;
+  let panels;
   let user;
-  let username;
-
-  try {
-    user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
-    username = user.username;
-  }
-  catch {
-    window.location.replace('/login');
-  }
+  let [username, setUsername] = useState('');
+  const [accessToken, setAccessToken] = useState('');
 
   useEffect(() => {
+    try {
+      sideItems = document.getElementsByClassName(styles.sideItem);
+      panels = document.getElementsByClassName(styles.panel);
+
+      user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
+
+      setUsername(user.username);
+      setAccessToken(user.access_token);
+    }
+    catch {
+      window.location.replace('/login');
+    }
+
     for (let i = 0; i < sideItems.length; i++) {
       sideItems[i].addEventListener('click', onSideItemClick, true);
     }
@@ -65,6 +70,11 @@ export default function Profile() {
     }
   }
 
+  const onLogout = () => {
+    window.localStorage.removeItem('AUTH_USER');
+    window.location.replace('./');
+  }
+
   return (
     <Layout title="Profile">
       <main>
@@ -84,6 +94,10 @@ export default function Profile() {
                 data-panelid="trackers">
                 Trackers
               </div>
+              <div className={styles.sideItem}
+                onClick={onLogout}>
+                Logout
+              </div>
             </div>
             <div className="col col--7">
               <div className={`${styles.panel} ${styles.visible}`}
@@ -92,7 +106,7 @@ export default function Profile() {
                 <p>
                   Hi <b>{username}</b>, you can find your <b>JSON Web Token</b> right below:
                 </p>
-                <CodeBlock className="language-http">{user.access_token}</CodeBlock>
+                <CodeBlock className="language-http">{accessToken}</CodeBlock>
                 <p>
                   Remember to follow <b><a href="/docs/authentication" target="_blank">Authentication</a></b> guidelines to use the token.
                 </p>
