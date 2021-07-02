@@ -97,6 +97,12 @@ export default function Signup() {
       return;
     }
 
+    let locale = navigator.language || navigator.userLanguage;
+
+    if (locale.length > 2) {
+      locale = locale.substring(0, 2);
+    }
+
     window.grecaptcha.ready(() => {
       window.grecaptcha.execute(SITE_KEY, { action: 'submit' }).then(async (token) => {
         const response = await fetch(`${process.env.API_URL}/v1/user?g_recaptcha_response=${token}`, {
@@ -108,7 +114,8 @@ export default function Signup() {
           body: JSON.stringify({
             email: email,
             username: username,
-            password: password
+            password: password,
+            localization: locale
           })
         });
 

@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 export default function Developer() {
 
   try {
-    const user = JSON.parse(window.sessionStorage.getItem('AUTH_USER'));
+    const user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
 
     if (!user) {
       window.location.replace('./login');

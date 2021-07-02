@@ -12,7 +12,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   try {
-    const user = JSON.parse(window.sessionStorage.getItem('AUTH_USER'));
+    const user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
 
     if (user) {
       window.location.replace('/profile');
@@ -94,7 +94,7 @@ export default function Login() {
         const body = await response.json();
 
         if (body.status_code === 200) {
-          window.sessionStorage.setItem('AUTH_USER', JSON.stringify(body.data));
+          window.localStorage.setItem('AUTH_USER', JSON.stringify(body.data));
           window.location.reload();
         }
         else {

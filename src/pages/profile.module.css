@@ -1,0 +1,67 @@
+.sideItem {
+  margin-bottom: .5rem;
+}
+
+.sideItem:hover {
+  cursor: pointer;
+}
+
+.sideItem:hover,
+.sideItem:active,
+.sideItem.selected {
+  color: var(--ifm-color-primary);
+}
+
+.panel {
+  display: none;
+}
+
+.panel.visible {
+  display: block;
+}
+
+.trackers {
+  display: flex;
+}
+
+.tracker {
+  position: relative;
+  display: block;
+  margin-right: 12px;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.tracker img {
+  display: block;
+  margin: 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+
+.anilist {
+  background-color: #19212d;
+}
+
+.mal {
+  background-color: #2e51a2;
+}
+
+.trackerActive::before {
+  position: absolute;
+  top: 8px; 
+  right: 8px;
+  width: 12px;
+  height: 12px;
+  background-color: #7bd555;
+  border-radius: 6px;
+  content: '';
+}
+
+.trackerDisabled {
+  filter: grayscale(1);
+  opacity: .6;
+  user-select: none;
+  pointer-events: none;
+}
