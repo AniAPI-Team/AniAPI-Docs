@@ -31,6 +31,7 @@ jobs:
           npm run build
         env:
           API_URL: ${{ secrets.API_URL }}
+          ANILIST_CLIENTID: ${{ secrets.ANILIST_CLIENTID }}
 
       - name: Deploy to GitHub Pages
         if: success()
