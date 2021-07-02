@@ -10,7 +10,7 @@ export default function Anilist() {
     user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
 
     if (!user) {
-      window.location.replace('./login');
+      window.location.replace('/login');
     }
   }
   catch { }
@@ -48,7 +48,7 @@ export default function Anilist() {
       return body.data.Viewer.id;
     }
     catch {
-      window.location.replace('./profile#trackers');
+      window.location.replace('/profile#trackers');
     }
   }
 
@@ -75,7 +75,7 @@ export default function Anilist() {
       window.localStorage.setItem('AUTH_USER', JSON.stringify(user));
     }
 
-    window.location.replace('./profile#trackers');
+    window.location.replace('/profile#trackers');
   }
 
   return (

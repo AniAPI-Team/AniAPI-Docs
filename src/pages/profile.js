@@ -72,7 +72,7 @@ export default function Profile() {
 
   const onLogout = () => {
     window.localStorage.removeItem('AUTH_USER');
-    window.location.replace('./');
+    window.location.replace('/');
   }
 
   return (
