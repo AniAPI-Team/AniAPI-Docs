@@ -134,7 +134,7 @@ export default function Signup() {
 
   return (
     <Layout title="Signup">
-      <main>
+      <main className={styles.signupMain}>
         {!completed ? (
           <div className={styles.form}>
             <img src="/img/aniapi_icon.png" />

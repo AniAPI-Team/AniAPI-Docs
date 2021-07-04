@@ -51,9 +51,9 @@ Verify it against the value you provided before to validate the response.
 ```http title="Example request URL"
 https://api.aniapi.com/v1/oauth?
     response_type=code
-    &client_id=CLIENT_ID
-    &redirect_uri=REDIRECT_URI
-    &state=RANDOM_STRING
+    &client_id=<CLIENT_ID>
+    &redirect_uri=<REDIRECT_URI>
+    &state=<RANDOM_STRING>
 ```
 
 ## Retrieve the authorization code
@@ -62,7 +62,7 @@ Once the user approved the **Authentication** request and completed the login st
 Let's assume you provided `http://localhost:3000/auth` as `redirect_uri` value. This will be the redirection URL:
 
 ```http title="Example redirect URL"
-http://localhost:3000/auth/?code=CODE&state=RANDOM_STRING
+http://localhost:3000/auth/?code=<CODE>&state=<RANDOM_STRING>
 ```
 
 As you can see, the **querystring** contains the generated `authorization_code` and the optional `state` value you provided initially.
@@ -86,10 +86,10 @@ In order to obtain the user's `access_token`, you need to make a `POST` request 
 
 ```bash title="Example request"
 curl -i -X POST https://api.aniapi.com/v1/oauth/token?
-                    client_id=CLIENT_ID
-                    &client_secret=CLIENT_SECRET
-                    &code=AUTHORIZATION_CODE
-                    &redirect_uri=REDIRECT_URI
+                    client_id=<CLIENT_ID>
+                    &client_secret=<CLIENT_SECRET>
+                    &code=<AUTHORIZATION_CODE>
+                    &redirect_uri=<REDIRECT_URI>
 ```
 
 If all goes right, you should receive a **JSON-Encoded** response with the user's `access_token`:
@@ -98,7 +98,7 @@ If all goes right, you should receive a **JSON-Encoded** response with the user'
 {
   "status": 200,
   "message": "Code verified",
-  "data": "ACCES_TOKEN",
+  "data": "<ACCES_TOKEN>",
   "version": "1"
 }
 ```

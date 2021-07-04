@@ -107,7 +107,7 @@ export default function Login() {
 
   return (
     <Layout title="Login">
-      <main>
+      <main className={styles.loginMain}>
         <div className={styles.form}>
           <img src="/img/aniapi_icon.png" />
           <form method="post">

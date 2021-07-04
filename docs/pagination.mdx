@@ -3,3 +3,48 @@ sidebar_position: 6
 ---
 
 # Pagination
+
+All API resources have support for **bulk fetches** via *list* API methods.
+These methods share a common structure, which allows three additional parameters:
+
+| Name          | Default   | Description                                                               |
+| ---           | ---       | ---                                                                       |
+| `locale`      | `en`      | Indicates the resource desired localization                               |
+| `page`        | `1`       | Indicates the list page to fetch                                          |
+| `per_page`    | `100`     | Indicates the desired results number on each page (max value is `100`)    |
+
+:::info
+
+Actually `locale` parameter is used on few resource types
+
+:::
+
+## Paginated response
+
+In order to give informations about the returned list of resources, AniAPI also provides **pagination parameters** inside the response's `data` field:
+
+* `current_page`, which tells you the current page number
+* `count`, indicating the number of total documents satisying the filter
+* `documents`, an array containing the current page documents
+* `last_page`, to indicate the last page available to fetch
+
+```js title="Example paginated response"
+{
+    "status_code": 200,
+    "message": "Page 1 contains 100 anime. Last page number is 161 for a total of 16094 anime",
+    "data": {
+        "current_page": 1,
+        "count": 16094,
+        "documents": [
+            {
+                // ...
+            },
+            {
+                // ...
+            },
+            // ...
+        ],
+        "last_page": 161
+    }
+}
+```

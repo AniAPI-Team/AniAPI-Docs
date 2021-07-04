@@ -3,3 +3,35 @@ sidebar_position: 4
 ---
 
 # Errors
+
+AniAPI uses conventional **[HTTP response codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)** to indicate the success or failure of an API request.
+As a summary:
+
+* `2xx` range indicate success
+* `4xx` range indicate an error regarding the information provided (e.g., a required parameter missing, a resource not found, etc)
+* `5xx` range indicate an error with AniAPI's server
+
+:::caution
+
+HTTP errors are returned inside the **[HTTP response header](https://developer.mozilla.org/en-US/docs/Glossary/Response_header)**, instead API errors are returned inside the **HTTP response body**!
+
+:::
+
+## API errors
+
+When an API request gets an HTTP `200` status code as response, could be that the **API response** contains an error.
+These are the possible errors you can have:
+
+|  Status                   | Reason                                                                    |
+| ---                       | ---                                                                       |
+| `200 - OK`                | Everything worked as expected                                             |
+| `400 - Bad request`       | The request was unacceptable, often due to missing a required parameter   |
+| `401 - Unauthorized`      | The user is not able to authenticate                                      |
+| `403 - Forbidden`         | The user doesn't have permissions to perform the request                  |
+| `404 - Not found`         | The requested resource doesn't exist                                      |
+| `429 - Too many requests` | Too many requests hit the API too quickly from the same origin            |
+| `500 - Server error`      | Something went wrong on AniAPI's end                                      |
+
+## Handling errors
+
+We recommend to focus on HTTP errors just for **[Authentication](authentication)** or **network** problems.

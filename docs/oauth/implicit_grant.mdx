@@ -45,9 +45,9 @@ Verify it against the value you provided before to validate the response.
 ```http title="Example request URL"
 https://api.aniapi.com/v1/oauth?
     response_type=token
-    &client_id=CLIENT_ID
-    &redirect_uri=REDIRECT_URI
-    &state=RANDOM_STRING
+    &client_id=<CLIENT_ID>
+    &redirect_uri=<REDIRECT_URI>
+    &state=<RANDOM_STRING>
 ```
 
 ## Retrieve the token
@@ -56,7 +56,7 @@ Once the user approved the **Authentication** request and completed the login st
 Let's assume you provided `http://localhost:3000/auth` as `redirect_uri` value. This will be the redirection URL:
 
 ```http title="Example redirect URL"
-http://localhost:3000/auth/#access_token=TOKEN&state=RANDOM_STRING
+http://localhost:3000/auth/#access_token=<TOKEN>&state=<RANDOM_STRING>
 ```
 
 As you can see, inside the **URL fragment** there will be the user's `access_token` and the optional `state` value you provided initially.

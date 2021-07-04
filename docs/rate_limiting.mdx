@@ -3,3 +3,20 @@ sidebar_position: 5
 ---
 
 # Rate Limiting
+
+As AniAPI is free-to-use, we wanna be sure to avoid too many requests on a limited span of time.
+Therefore, request from the same origin are limited to `90` per **minute**.
+
+Inside each **HTTP response header** from the API, you will receive three additional **headers**:
+
+* `X-RateLimit-Limit`, which indicates the **maximum requests number** you can do in a minute
+* `X-RateLimit-Remaining`, to update you on your **current remaining number of requests** 
+* `X-RateLimit-Reset`, which tells you about **how many seconds you have to wait** until you can make another **accepted request**
+
+:::tip
+
+You have to care about `X-RateLimit-Reset` only if you do more than `90` requests in a minute
+
+:::
+
+When you go over `90` requests in a minute, you will get a `429` **HTTP error** as response.
