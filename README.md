@@ -1,33 +1,29 @@
-# Website
+# Raspberry Pi Documentation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This is the official documentation for the AniAPI HTTP Rest APIs, written by the [AniAPI Team](https://github.com/AniAPI-Team) with community contributions.
 
-## Installation
+## Contents
 
-```console
-yarn install
-```
+- [Introduction](docs/intro.mdx)
+- [Authentication](docs/authentication.mdx)
+- [Errors](docs/errors.mdx)
+- [Rate Limiting](docs/rate_limiting.mdx)
+- [Pagination](docs/pagination.mdx)
+- [Versioning](docs/versioning.mdx)
+- [Resources](docs/resources.mdx)
 
-## Local Development
+## Contributions
 
-```console
-yarn start
-```
+If you have anything to fix or details to add, first [file an issue](https://github.com/AniAPI-Team/AniAPI-Docs/issues) on GitHub to see if it is likely to be accepted, then file a pull request with your change (one PR per issue).
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This is not intended to be an open wiki; we want to keep it concise and minimal but will accept fixes and suitable additions.
 
-## Build
+## Licence
 
-```console
-yarn build
-```
+Unless otherwise specified, everything in this repository is covered by the following licence:
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+[![Creative Commons Attribution-ShareAlike 4.0 International](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-## Deployment
+***AniAPI Documentation*** by the [AniAPI Team](https://github.com/AniAPI-Team) is licensed under a [Creative Commons Attribution 4.0 International Licence](https://creativecommons.org/licenses/by-sa/4.0/).
 
-```console
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+Based on a work at https://github.com/AniAPI-Team/AniAPI-Docs
