@@ -10,7 +10,7 @@ This is the official documentation for the AniAPI HTTP Rest APIs, written by the
 - [Rate Limiting](docs/rate_limiting.mdx)
 - [Pagination](docs/pagination.mdx)
 - [Versioning](docs/versioning.mdx)
-- [Resources](docs/resources.mdx)
+- [Resources](docs/resources)
 
 ## Contributions
 
