@@ -18,6 +18,8 @@ If you have anything to fix or details to add, first [file an issue](https://git
 
 This is not intended to be an open wiki; we want to keep it concise and minimal but will accept fixes and suitable additions.
 
+This documentation is built with [Docusaurus](https://docusaurus.io/docs), please refer to its documentation if you plan to contribute to ours.
+
 ## Licence
 
 Unless otherwise specified, everything in this repository is covered by the following licence:
