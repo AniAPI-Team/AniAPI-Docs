@@ -1,0 +1,45 @@
+.block {
+  background-color: rgb(40, 42, 54);
+  color: rgb(248, 248, 242);
+  border-radius: var(--ifm-global-radius);
+  font-size: var(--ifm-code-font-size);
+}
+
+.blockHead {
+  padding: .75rem var(--ifm-pre-padding);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  font-weight: 500;
+}
+
+.blockBody {
+  padding: var(--ifm-pre-padding);
+  line-height: 2rem;
+  letter-spacing: 1px;
+  font-size: 90%;
+}
+
+.method {
+  margin-right: .5rem;
+  margin-left: 1rem;
+  font-weight: 700;
+}
+
+.getMethod {
+  color: #196bb2;
+}
+
+.putMethod {
+  color: #c48536;
+}
+
+.postMethod {
+  color: #1fa44e;
+}
+
+.deleteMethod {
+  color: #a22027;
+}
+
+.param {
+
+}
