@@ -2,6 +2,8 @@
 
 This is the official documentation for the AniAPI HTTP Rest APIs, written by the [AniAPI Team](https://github.com/AniAPI-Team) with community contributions.
 
+> :warning: **Working on it**: ~70% done
+
 ## Contents
 
 - [Introduction](docs/intro.mdx)
