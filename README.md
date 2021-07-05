@@ -1,4 +1,4 @@
-# Raspberry Pi Documentation
+# AniAPI Documentation
 
 This is the official documentation for the AniAPI HTTP Rest APIs, written by the [AniAPI Team](https://github.com/AniAPI-Team) with community contributions.
 
