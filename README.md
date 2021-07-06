@@ -1,33 +1,33 @@
-# Website
+# AniAPI Documentation
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This is the official documentation for the AniAPI HTTP Rest APIs, written by the [AniAPI Team](https://github.com/AniAPI-Team) with community contributions.
 
-## Installation
+> :warning: **Working on it**: ~70% done
 
-```console
-yarn install
-```
+## Contents
 
-## Local Development
+- [Introduction](docs/intro.mdx)
+- [Authentication](docs/authentication.mdx)
+- [Errors](docs/errors.mdx)
+- [Rate Limiting](docs/rate_limiting.mdx)
+- [Pagination](docs/pagination.mdx)
+- [Versioning](docs/versioning.mdx)
+- [Resources](docs/resources)
 
-```console
-yarn start
-```
+## Contributions
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+If you have anything to fix or details to add, first [file an issue](https://github.com/AniAPI-Team/AniAPI-Docs/issues) on GitHub to see if it is likely to be accepted, then file a pull request with your change (one PR per issue).
 
-## Build
+This is not intended to be an open wiki; we want to keep it concise and minimal but will accept fixes and suitable additions.
 
-```console
-yarn build
-```
+This documentation is built with [Docusaurus](https://docusaurus.io/docs), please refer to its documentation if you plan to contribute to ours.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Licence
 
-## Deployment
+Unless otherwise specified, everything in this repository is covered by the following licence:
 
-```console
-GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
-```
+[![Creative Commons Attribution-ShareAlike 4.0 International](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+***AniAPI Documentation*** by the [AniAPI Team](https://github.com/AniAPI-Team) is licensed under a [Creative Commons Attribution 4.0 International Licence](https://creativecommons.org/licenses/by-sa/4.0/).
+
+Based on a work at https://github.com/AniAPI-Team/AniAPI-Docs
