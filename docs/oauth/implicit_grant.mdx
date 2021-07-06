@@ -4,15 +4,15 @@ sidebar_position: 1
 
 # Implicit Grant
 
-As you can't store **your client credentials** in a safe area, you'll need to use the implicit grant.
+As you can't store **your client's credentials** in a safe area, you'll need to use the implicit grant.
 This way is mainly used by **frontend-only** environments, like websites or mobile applications.
 
 ## How it works
 
 1. The user asks for **Login** inside your application
 2. Instead of building a *login-form*, you just redirect the user to **our OAuth endpoint**
-3. The user authenticates with his credentials
-4. If nothing goes wrong, the AniAPI server redirects the user to your app with his `access_token`
+3. The user authenticates with their credentials
+4. If nothing goes wrong, the AniAPI server redirects the user to your app with their `access_token`
 
 ## Requirements
 
@@ -52,7 +52,7 @@ https://api.aniapi.com/v1/oauth?
 
 ## Retrieve the token
 
-Once the user approved the **Authentication** request and completed the login step, **AniAPI server** will redirect him back to your application.
+Once the user approved the **Authentication** request and completed the login step, the **AniAPI server** will redirect them back to your application.
 Let's assume you provided `http://localhost:3000/auth` as `redirect_uri` value. This will be the redirection URL:
 
 ```http title="Example redirect URL"
@@ -63,7 +63,7 @@ As you can see, inside the **URL fragment** there will be the user's `access_tok
 
 :::caution
 
-The **URL fragment** differs from a **querystring** because it is just accesible from **frontend** only.
+The **URL fragment** differs from a **querystring** because it is accesible from **frontend** only.
 
 You need to extract it by using **[JavaScript](https://en.wikipedia.org/wiki/JavaScript)** inside the webpage.
 

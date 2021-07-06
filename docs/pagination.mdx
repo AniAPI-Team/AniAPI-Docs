@@ -9,7 +9,7 @@ These methods share a common structure, which allows three additional parameters
 
 | Name          | Default   | Description                                                               |
 | ---           | ---       | ---                                                                       |
-| `locale`      | `en`      | Indicates the resource desired localization                               |
+| `locale`      | `en`      | Indicates the resource's desired localization                             |
 | `page`        | `1`       | Indicates the list page to fetch                                          |
 | `per_page`    | `100`     | Indicates the desired results number on each page (max value is `100`)    |
 
@@ -24,7 +24,7 @@ Actually `locale` parameter is used on few resource types
 In order to give informations about the returned list of resources, AniAPI also provides **pagination parameters** inside the response's `data` field:
 
 * `current_page`, which tells you the current page number
-* `count`, indicating the number of total documents satisying the filter
+* `count`, indicating the number of total documents satisfying the filter
 * `documents`, an array containing the current page documents
 * `last_page`, to indicate the last page available to fetch
 
