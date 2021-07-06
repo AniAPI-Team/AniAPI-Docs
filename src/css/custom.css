@@ -107,3 +107,7 @@ html[data-theme='dark'] .footer--dark {
 .language-http span {
   color: rgb(98, 114, 164) !important;
 }
+
+hr {
+  border-color: var(--ifm-toc-border-color);
+}

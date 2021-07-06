@@ -2,13 +2,14 @@
 sidebar_position: 1
 ---
 
+# Anime
+
 import ApiCodeBlock from '../../src/components/ApiCodeBlock';
+import Highlight from '../../src/components/Highlight';
 const endpoints = [
   { method: 'GET', uri: '/v1/anime/:id' },
   { method: 'GET', uri: '/v1/anime' },
 ];
-
-# Anime
 
 This is an object representing an Anime show.
 The API allows you to retrieve individual Anime as well as a list of them using various filters.
@@ -21,25 +22,25 @@ The API allows you to retrieve individual Anime as well as a list of them using 
 
 ---
 
-#### id `integer`
+#### id <Highlight bgColor="#8D46B8" color="white" content="integer" />
 
 Unique identifier for an Anime.
 
 ---
 
-#### anilist_id `integer`
+#### anilist_id <Highlight bgColor="#8D46B8" color="white" content="integer" />
 
-*[AniList](https://anilist.co/)* external unique identifier.
-
----
-
-#### mal_id `integer`
-
-*[MyAnimeList](https://myanimelist.net/)* external unique identifier.
+***[AniList](https://anilist.co/)*** external unique identifier.
 
 ---
 
-#### format `enum`
+#### mal_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+***[MyAnimeList](https://myanimelist.net/)*** external unique identifier.
+
+---
+
+#### format <Highlight bgColor="#8D46B8" color="white" content="enum" />
 
 The show format destination.
 
@@ -55,7 +56,7 @@ The show format destination.
 
 ---
 
-#### status `enum`
+#### status <Highlight bgColor="#8D46B8" color="white" content="enum" />
 
 The show global release status.
 
@@ -68,31 +69,31 @@ The show global release status.
 
 ---
 
-#### titles `array of strings`
+#### titles <Highlight bgColor="#8D46B8" color="white" content="array of strings" />
 
-A collection of titles organized by localization.
-
----
-
-#### descriptions `array of strings`
-
-A collection of descriptions organized by localization.
+A collection of show's titles organized by localization.
 
 ---
 
-#### start_date `date`
+#### descriptions <Highlight bgColor="#8D46B8" color="white" content="array of strings" />
+
+A collection of show's descriptions organized by localization.
+
+---
+
+#### start_date <Highlight bgColor="#8D46B8" color="white" content="date" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
 
 The show global release date.
 
 ---
 
-#### end_date `date`
+#### end_date <Highlight bgColor="#8D46B8" color="white" content="date" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
 
 The known show global end date.
 
 ---
 
-#### season_period `enum`
+#### season_period <Highlight bgColor="#8D46B8" color="white" content="enum" />
 
 The season on which the show has been released.
 
@@ -106,27 +107,76 @@ The season on which the show has been released.
 
 ---
 
-`season_year`
+#### season_year <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
 
-`episodes_count`
+The year on which the show has been released.
 
-`episode_duration`
+---
 
-`trailer_url`
+#### episodes_count <Highlight bgColor="#8D46B8" color="white" content="integer" />
 
-`cover_image`
+Number of episodes released for the show.
 
-`cover_color`
+---
 
-`banner_image`
+#### episode_duration <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
 
-`genres`
+The show's episode average duration in minutes.
 
-`sequel`
+---
 
-`prequel`
+#### trailer_url <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
 
-`score`
+External link to the show's trailer video.
+Possible services:
+
+* Youtube
+* Dailymotion
+
+---
+
+#### cover_image <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The show's cover image.
+
+---
+
+##### cover_color <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The show's cover main color, in `HEX` format.
+
+---
+
+##### banner_image <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The show's banner image.
+
+---
+
+#### genres <Highlight bgColor="#8D46B8" color="white" content="array of strings" />
+
+A collection of the show's associated genres.
+You can find all possible values ***[here](https://api.aniapi.com/v1/resources/1.0/0)***.
+
+---
+
+#### sequel <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+The show's precedent Anime's unique identifier in story-line.
+
+---
+
+#### prequel <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+The show's successive Anime's unique identifier in story-line.
+
+---
+
+#### score <Highlight bgColor="#8D46B8" color="white" content="float" />
+
+The show's global appreciation indicator. Minimum value is `0` and maximum is `100`.
+
+---
 
 ### Example
 
@@ -198,19 +248,86 @@ The season on which the show has been released.
       "Kuudere"
   ],
   "score": 86,
-  "user_status": 0,
   "id": 11
 }
 ```
 
 ## Retrieve a specific Anime
 
+<ApiCodeBlock items={[endpoints[0]]} />
+
+Retrieves an Anime show, based on its unique identifier.
+
 ### Parameters
 
+No parameters.
+
 ### Returns
+
+Returns an Anime object if a valid identifier was provided.
+
+### Try it
+
 
 ## Get a list of Anime
 
+<ApiCodeBlock items={[endpoints[1]]} />
+
+Returns a list of Anime objects.
+The Anime are returned sorted by score, with the most popular Anime appearing first.
+
 ### Parameters
 
+---
+
+#### title <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A case-insensitive pattern filter on the list based on the `titles` field values.
+
+---
+
+#### anilist_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `anilist_id` field value.
+
+---
+
+#### mal_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `mal_id` field value.
+
+---
+
+#### formats <Highlight bgColor="#8D46B8" color="white" content="array of enums" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `format` field value.
+
+---
+
+#### status <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `status` field value.
+
+---
+
+#### year <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `season_year` field value.
+
+---
+
+#### season <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `season_period` field value.
+
+---
+
+#### genres <Highlight bgColor="#8D46B8" color="white" content="array of strings" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A case-sensitive pattern filter on the list based on the `genres` field values.
+
+---
+
 ### Returns
+
+Returns an array of Anime objects with a size based on the filter provided.

@@ -18,7 +18,7 @@ export default function ApiCodeBlock(params) {
     const uri = params.items[i].uri;
 
     items.push((
-      <div>
+      <div key={`${method}-${uri}`}>
         <span className={`${styles.method} ${getStyleByMethod(method)}`}>
           {method}
         </span>
@@ -29,9 +29,11 @@ export default function ApiCodeBlock(params) {
 
   return (
     <div className={styles.block}>
-      <div className={styles.blockHead}>
-        {params.title}
-      </div>
+      {params.title && (
+        <div className={styles.blockHead}>
+          {params.title}
+        </div>
+      )}
       <div className={styles.blockBody}>
         {items}
       </div>

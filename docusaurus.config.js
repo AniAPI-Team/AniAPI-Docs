@@ -132,5 +132,8 @@ module.exports = {
         silent: true
       }
     ]
+  ],
+  themes: [
+    '@docusaurus/theme-live-codeblock'
   ]
 };
