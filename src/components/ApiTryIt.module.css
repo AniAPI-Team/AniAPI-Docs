@@ -1,0 +1,41 @@
+.tryIt {
+  
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 240px);
+  margin-bottom: .8rem;
+}
+
+.itemLabel {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.jsonContent {
+  max-height: 1000px;
+  overflow: auto;
+}
+
+.tryIt code {
+  max-height: 1000px !important;
+  overflow: auto !important;
+}
+
+select {
+  margin: 8px 0;
+  padding: 12px 18px;
+  background-color: #151f2e;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, .6);
+  outline: none;
+  transition: .3s;
+}
+
+select:focus, select:active {
+  border-color: rgba(255, 255, 255, .3);
+  color: white;
+  transition: .3s;
+}

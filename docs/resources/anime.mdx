@@ -6,7 +6,9 @@ sidebar_position: 1
 
 import ApiCodeBlock from '../../src/components/ApiCodeBlock';
 import Highlight from '../../src/components/Highlight';
-const endpoints = [
+import ApiTryIt from '../../src/components/ApiTryIt';
+
+export const endpoints = [
   { method: 'GET', uri: '/v1/anime/:id' },
   { method: 'GET', uri: '/v1/anime' },
 ];
@@ -69,15 +71,15 @@ The show global release status.
 
 ---
 
-#### titles <Highlight bgColor="#8D46B8" color="white" content="array of strings" />
+#### titles <Highlight bgColor="#8D46B8" color="white" content="map of strings" />
 
-A collection of show's titles organized by localization.
+A dictionary of show's titles organized by localization.
 
 ---
 
-#### descriptions <Highlight bgColor="#8D46B8" color="white" content="array of strings" />
+#### descriptions <Highlight bgColor="#8D46B8" color="white" content="map of strings" />
 
-A collection of show's descriptions organized by localization.
+A dictionary of show's descriptions organized by localization.
 
 ---
 
@@ -268,6 +270,12 @@ Returns an Anime object if a valid identifier was provided.
 
 ### Try it
 
+export const retrieveAnimeParams = [
+  { name: ':id', type: 'number', placeholder: ':id', value: '11' }
+];
+
+<ApiTryIt items={retrieveAnimeParams} uri={endpoints[0].uri} />
+
 
 ## Get a list of Anime
 
@@ -331,3 +339,18 @@ A case-sensitive pattern filter on the list based on the `genres` field values.
 ### Returns
 
 Returns an array of Anime objects with a size based on the filter provided.
+
+### Try it
+
+export const getListAnimeParams = [
+  { name: 'title', type: 'text', placeholder: 'title', value: 'One Piece' },
+  { name: 'anilist_id', type: 'number', placeholder: 'anilist_id', value: '' },
+  { name: 'mal_id', type: 'number', placeholder: 'mal_id', value: '' },
+  { name: 'formats', type: 'text', placeholder: 'formats', value: '0,1' },
+  { name: 'status', type: 'text', placeholder: 'status', value: '1' },
+  { name: 'year', type: 'number', placeholder: 'year', value: '1999' },
+  { name: 'season', type: 'text', placeholder: 'season', value: '3' },
+  { name: 'genres', type: 'text', placeholder: 'genres', value: 'Pirates,War,Cyborg' },
+];
+
+<ApiTryIt items={getListAnimeParams} uri={endpoints[1].uri} />
