@@ -9,11 +9,11 @@ import TabItem from '@theme/TabItem';
 
 AniAPI uses **[JSON Web Tokens](https://jwt.io/introduction)** to authenticate requests. 
 Each JWT is referred to an user `id` and is valid for `30` days.
-When a JWT expire, the user should login again to obtain a new one.
+When a JWT expires, the user should login again to obtain a new one.
 
 You can obtain your JWT on **[your profile page](../profile#jwt)**.
 
-Authentication on secured endpoints is managed with **HTTP Bearer Auth**, which expect the use of `Authorization` HTTP header:
+Authentication on secured endpoints is managed with **HTTP Bearer Auth**, which expects the use of `Authorization` HTTP header:
 
 <Tabs
     defaultValue="curl"
@@ -77,7 +77,7 @@ You can view and manage all your clients on **[the developer page](../developer)
 ### Do I need to use OAuth?
 
 If you want to allow users to login with their **AniAPI acccount** and have complete access on their data **you will need** to use OAuth.
-Otherwise, if your application scope is **read-only** on public data, you won't need it.
+Otherwise, if your application's scope is **read-only** on public data, you won't need it.
 
 ### Which grant type should I use?
 

@@ -22,6 +22,10 @@ This is not intended to be an open wiki; we want to keep it concise and minimal 
 
 This documentation is built with [Docusaurus](https://docusaurus.io/docs), please refer to its documentation if you plan to contribute to ours.
 
+<a href="https://github.com/AniAPI-Team/AniAPI-Docs/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=AniAPI-Team/AniAPI-Docs" />
+</a>
+
 ## Licence
 
 Unless otherwise specified, everything in this repository is covered by the following licence:
