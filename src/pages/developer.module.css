@@ -1,0 +1,76 @@
+.sideItem {
+  margin-bottom: .5rem;
+}
+
+.sideItem:hover {
+  cursor: pointer;
+}
+
+.sideItem:hover,
+.sideItem:active,
+.sideItem.selected {
+  color: var(--ifm-color-primary);
+}
+
+.panel {
+  display: none;
+}
+
+.panel.visible {
+  display: block;
+}
+
+.client {
+  padding: 16px;
+  background-color: #0B1622;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.client:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.client::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.client h4 {
+  color: var(--ifm-color-primary);
+}
+
+.client button {
+  float: right;
+  margin-top: 1.6rem;
+  padding: 12px 24px;
+}
+
+.client button:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.clientRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clientRow span {
+  font-weight: 500;
+}
+
+.inputLabel:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.inputLabel {
+  margin-bottom: .3rem;
+}
+
+.errors {
+  margin: 12px 0;
+  color: red;
+  text-align: left;
+  font-weight: 300;
+}

@@ -65,3 +65,34 @@
   user-select: none;
   pointer-events: none;
 }
+
+.inputLabel:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.inputLabel {
+  margin-bottom: .3rem;
+}
+
+.genres {
+  margin-bottom: 1.5rem;
+}
+
+.genres input {
+  margin-left: .4rem;
+  margin-right: 2rem;
+}
+
+.errors {
+  margin: 12px 0;
+  color: red;
+  text-align: left;
+  font-weight: 300;
+}
+
+.success {
+  margin: 12px 0;
+  color: greenyellow;
+  text-align: left;
+  font-weight: 300;
+}

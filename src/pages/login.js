@@ -11,6 +11,8 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
   try {
     const user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
 
@@ -62,17 +64,21 @@ export default function Login() {
   }
 
   const onLogin = (e) => {
+    setLoading(true);
+
     const errors = document.getElementById('errors');
 
     errors.innerHTML = '';
 
     if (!email) {
       errors.innerHTML += 'Email must not be empty';
+      setLoading(false);
       return;
     }
 
     if (!password) {
       errors.innerHTML += 'Password must not be empty';
+      setLoading(false);
       return;
     }
 
@@ -99,6 +105,7 @@ export default function Login() {
         }
         else {
           errors.innerHTML += body.data;
+          setLoading(false);
           return;
         }
       });
@@ -126,9 +133,13 @@ export default function Login() {
               value={password} />
             <div id="errors"
               className={styles.errors}></div>
-            <button type="button"
-              id="login"
-              onClick={onLogin}>Login</button>
+            {loading ? (
+              <button type="button">...</button>
+            ) : (
+              <button type="button"
+                id="login"
+                onClick={onLogin}>Login</button>
+            )}
           </form>
           <Link
             className={styles.signup}

@@ -10,18 +10,34 @@ export default function Profile() {
   let sideItems;
   let panels;
   let user;
-  let [username, setUsername] = useState('');
+
+  const [id, setId] = useState(-1);
+  const [username, setUsername] = useState('');
   const [accessToken, setAccessToken] = useState('');
 
-  useEffect(() => {
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [gender, setGender] = useState(0);
+  const [locale, setLocale] = useState('');
+
+  const [locales, setLocales] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(async () => {
     try {
       sideItems = document.getElementsByClassName(styles.sideItem);
       panels = document.getElementsByClassName(styles.panel);
 
       user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
 
+      setId(user.id);
       setUsername(user.username);
       setAccessToken(user.access_token);
+      setLocale(user.localization);
+      setGender(user.gender);
+
+      await loadLocalizations();
     }
     catch {
       window.location.replace('/login');
@@ -37,10 +53,41 @@ export default function Profile() {
       selectPanel(panelId);
     }
 
-    if (user.anilist_id) {
+    if (user.has_anilist) {
       document.getElementById('anilist-tracker').classList.add(styles.trackerActive);
     }
   }, []);
+
+  const loadLocalizations = async () => {
+    const version = await fetch(`${process.env.API_URL}/v1/resources`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const versionBody = await version.json();
+
+    const response = await fetch(`${process.env.API_URL}/v1/resources/${versionBody.data}/1`, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const body = await response.json();
+
+    const ls = [];
+
+    for (let i = 0; i < body.data.localizations.length; i++) {
+      const l = body.data.localizations[i];
+      ls.push(<option key={i} value={l.i18n}>{l.label}</option>);
+    }
+
+    setLocales(ls);
+  }
 
   const onSideItemClick = (e) => {
     const panelId = e.target.getAttribute('data-panelid');
@@ -70,6 +117,64 @@ export default function Profile() {
     }
   }
 
+  const onSaveEdit = async () => {
+    setLoading(true);
+
+    const success = document.getElementById('success');
+    const errors = document.getElementById('errors');
+
+    let payload = {};
+
+    success.innerHTML = '';
+    errors.innerHTML = '';
+
+    if (password) {
+      if (password !== passwordConfirm) {
+        errors.innerHTML += 'Passwords must match';
+        setLoading(false);
+        return;
+      }
+
+      payload.password = password;
+    }
+
+    if (locale) {
+      payload.localization = locale;
+    }
+
+    if (gender !== undefined && gender !== null) {
+      payload.gender = gender;
+    }
+
+    payload.id = id;
+
+    const response = await fetch(`${process.env.API_URL}/v1/user`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const body = await response.json();
+
+    if (body.status_code === 200) {
+      success.innerHTML = 'Saved';
+      setLoading(false);
+    }
+    else {
+      setLoading(false);
+      errors.innerHTML += body.data;
+      return;
+    }
+  }
+
+  const onDeveloper = () => {
+    window.location.replace('developer');
+  }
+
   const onLogout = () => {
     window.localStorage.removeItem('AUTH_USER');
     window.location.replace('/');
@@ -95,6 +200,10 @@ export default function Profile() {
                 Trackers
               </div>
               <div className={styles.sideItem}
+                onClick={onDeveloper}>
+                Developer
+              </div>
+              <div className={styles.sideItem}
                 onClick={onLogout}>
                 Logout
               </div>
@@ -114,6 +223,63 @@ export default function Profile() {
               <div className={styles.panel}
                 data-panelid="edit">
                 <h1>Edit</h1>
+                <form method="post">
+                  <h4 className={styles.inputLabel}>Password</h4>
+                  <input type="password"
+                    placeholder="Password"
+                    id="password"
+                    autoComplete="on"
+                    onChange={e => setPassword(e.target.value)}
+                    value={password} />
+                  <h4 className={styles.inputLabel}>Confirm Password</h4>
+                  <input type="password"
+                    placeholder="Confirm Password"
+                    id="password-confirm"
+                    autoComplete="on"
+                    onChange={e => setPasswordConfirm(e.target.value)}
+                    value={passwordConfirm} />
+                  <h4 className={styles.inputLabel}>Locale</h4>
+                  <select id="locales"
+                    onChange={e => setLocale(e.target.value)}
+                    value={locale}>
+                    {locales}
+                  </select>
+                  <h4 className={styles.inputLabel}>Gender</h4>
+                  <div className={styles.genres}>
+                    <label>Unknown</label>
+                    <input type="radio"
+                      name="genre"
+                      id="genre-unknown"
+                      value={0}
+                      checked={gender === 0}
+                      onChange={e => setGender(0)} />
+                    <label>Male</label>
+                    <input type="radio"
+                      name="genre"
+                      id="genre-male"
+                      value={1}
+                      checked={gender === 1}
+                      onChange={e => setGender(1)} />
+                    <label>Female</label>
+                    <input type="radio"
+                      name="genre"
+                      id="genre-female"
+                      value={2}
+                      checked={gender === 2}
+                      onChange={e => setGender(2)} />
+                  </div>
+                  <div id="errors"
+                    className={styles.errors}></div>
+                  {loading ? (
+                    <button type="button">...</button>
+                  ) : (
+                    <button type="button"
+                      id="save-edit"
+                      onClick={onSaveEdit}>Save</button>
+                  )}
+                  <div id="success"
+                    className={styles.success}></div>
+                </form>
               </div>
               <div className={styles.panel}
                 data-panelid="trackers">

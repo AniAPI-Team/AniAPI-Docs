@@ -14,6 +14,8 @@ export default function Signup() {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [completed, setCompleted] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const loadScript = (id, url, callback) => {
       const exists = document.getElementById(id);
@@ -68,32 +70,39 @@ export default function Signup() {
   }
 
   const onSignup = (e) => {
+    setLoading(true);
+
     const errors = document.getElementById('errors');
 
     errors.innerHTML = '';
 
     if (!email) {
       errors.innerHTML += 'Email must not be empty';
+      setLoading(false);
       return;
     }
 
     if (!username) {
       errors.innerHTML += 'Username must not be empty';
+      setLoading(false);
       return;
     }
 
     if (!password) {
       errors.innerHTML += 'Password must not be empty';
+      setLoading(false);
       return;
     }
 
     if (!passwordConfirm) {
       errors.innerHTML += 'Confirm Password must not be empty';
+      setLoading(false);
       return;
     }
 
     if (password !== passwordConfirm) {
       errors.innerHTML += 'Passwords must match';
+      setLoading(false);
       return;
     }
 
@@ -123,8 +132,10 @@ export default function Signup() {
 
         if (body.status_code === 200) {
           setCompleted(true);
+          setLoading(false);
         }
         else {
+          setLoading(false);
           errors.innerHTML += body.data;
           return;
         }
@@ -167,9 +178,13 @@ export default function Signup() {
                 value={passwordConfirm} />
               <div id="errors"
                 className={styles.errors}></div>
-              <button type="button"
-                id="signup"
-                onClick={onSignup}>Signup</button>
+              {loading ? (
+                <button type="button">...</button>
+              ) : (
+                <button type="button"
+                  id="signup"
+                  onClick={onSignup}>Signup</button>
+              )}
             </form>
             <Link
               className={styles.login}
