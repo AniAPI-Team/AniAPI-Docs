@@ -161,6 +161,13 @@ export default function Profile() {
     const body = await response.json();
 
     if (body.status_code === 200) {
+      let user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
+
+      user.gender = gender;
+      user.localization = locale;
+
+      window.localStorage.setItem('AUTH_USER', JSON.stringify(user));
+
       success.innerHTML = 'Saved';
       setLoading(false);
     }
@@ -172,7 +179,7 @@ export default function Profile() {
   }
 
   const onDeveloper = () => {
-    window.location.replace('developer');
+    window.location.replace('/developer');
   }
 
   const onLogout = () => {
