@@ -1,0 +1,384 @@
+---
+sidebar_position: 5
+---
+
+# UserStory
+
+import ApiCodeBlock from '../../src/components/ApiCodeBlock';
+import Highlight from '../../src/components/Highlight';
+import ApiTryIt from '../../src/components/ApiTryIt';
+
+export const endpoints = [
+  { method: 'GET', uri: '/v1/user_story/:id' },
+  { method: 'GET', uri: '/v1/user_story' },
+  { method: 'PUT', uri: '/v1/user_story' },
+  { method: 'POST', uri: '/v1/user_story' },
+  { method: 'DELETE', uri: '/v1/user_story' }
+];
+
+This is an object representing an User's watch history.
+The API allows you to retrieve individual UserStory as well as a list of them using various filters.
+Furthermore it lets you create, update and delete an UserStory.
+
+UserStory is used to synchronize data between AniAPI and external Anime's tracking systems.
+
+<ApiCodeBlock title="Endpoints" items={endpoints} />
+
+## The UserStory object
+
+### Attributes
+
+---
+
+#### id <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+Unique identifier for an UserStory.
+
+---
+
+#### user_id <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+***[User](user)*** external unique identifier.
+
+---
+
+#### anime_id <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+***[Anime](anime)*** external unique identifier.
+
+---
+
+#### status <Highlight bgColor="#8D46B8" color="white" content="enum" />
+
+The UserStory's watching status.
+
+```js title="Possible status enum values"
+"CURRENT": 0,
+"PLANNING": 1,
+"COMPLETED": 2,
+"DROPPED": 3,
+"PAUSED": 4,
+"REPEATING": 5
+```
+
+---
+
+#### current_episode <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+The UserStory's watching progress.
+
+---
+
+#### current_episode_ticks <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+The UserStory's `current_episode` watching time in milliseconds.
+
+---
+
+#### synced <Highlight bgColor="#8D46B8" color="white" content="bool" />
+
+Indicates if an UserStory has been synced with User's linked trackers.
+
+---
+
+### Example
+
+```js title="UserStory object example"
+{
+  "user_id": 1,
+  "anime_id": 10,
+  "status": 2,
+  "current_episode": 220,
+  "current_episode_ticks": 0,
+  "id": 27
+}
+```
+
+## Retrieve a specific UserStory
+
+<ApiCodeBlock items={[endpoints[0]]} />
+
+Retrieves an UserStory, based on its unique identifier.
+
+### Parameters
+
+No parameters.
+
+### Returns
+
+Returns an  UserStory object if a valid identifier was provided and the authenticated User owns the rights to get it.
+
+### Try it
+
+export const retrieveUserStoryParams = [
+  { name: ':id', type: 'number', placeholder: ':id', value: '1' }
+];
+
+<ApiTryIt items={retrieveUserStoryParams} uri={endpoints[0].uri} secure={true} />
+
+## Get a list of UserStory
+
+<ApiCodeBlock items={[endpoints[1]]} />
+
+Returns a list of UserStory objects.
+The UserStories are returned sorted by `creation_date`, following descending order.
+
+:::info
+
+As default, it will return all the UserStories owned by the request's authenticated User using the `user_id` filter's field.
+
+:::
+
+### Parameters
+
+---
+
+#### anime_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `anime_id` field value.
+
+---
+
+#### user_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="default" />
+
+A filter on the list based on the `user_id` field value.
+
+---
+
+#### status <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `status` field value.
+
+---
+
+#### synced <Highlight bgColor="#8D46B8" color="white" content="bool" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `synced` field value.
+
+---
+
+### Returns
+
+Returns an array of UserStory objects with a size based on the filter provided.
+
+### Try it
+
+export const getListUserStoryParams = [
+  { name: 'anime_id', type: 'number', placeholder: 'anime_id', value: '' },
+  { name: 'user_id', type: 'number', placeholder: 'user_id', value: '' },
+  { name: 'status', type: 'number', placeholder: 'status', value: '' },
+  { name: 'synced', type: 'checkbox', placeholder: 'synced', value: true },
+];
+
+<ApiTryIt items={getListUserStoryParams} uri={endpoints[1].uri} secure={true} />
+
+## Create an UserStory
+
+<ApiCodeBlock items={[endpoints[2]]} />
+
+Creates an UserStory based on the provided values.
+
+### Parameters
+
+---
+
+#### user_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The ***[User](user)***'s id that own the UserStory.
+
+---
+
+#### anime_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The UserStory's ***[Anime](anime)***.
+
+---
+
+#### status <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The UserStory's watching status.
+
+---
+
+#### current_episode <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+The UserStory's watching progress.
+Must be equal or less than the ***[Anime](anime)***'s `episodes_count` value.
+When you provide a `status` equal to `1` or `2` this field is auto-calculated.
+
+---
+
+#### current_episode_ticks <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+The UserStory's `current_episode` watching time in milliseconds.
+
+---
+
+### Returns
+
+Returns the created UserStory object.
+
+### Example
+
+```js title="Example UserStory create request"
+fetch('https://api.aniapi.com/v1/user_story', {
+  method: 'PUT',
+  headers: {
+    'Authorization': 'Bearer <YOUR_JWT>',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  body: {
+    user_id: 1,
+    anime_id: 10,
+    status: 2
+  }
+});
+```
+
+```js title="Example UserStory create response"
+{
+  "status_code": 200,
+  "message": "Story created",
+  "data": {
+    "user_id": 1,
+    "anime_id": 10,
+    "status": 2,
+    "current_episode": 220,
+    "current_episode_ticks": 0,
+    "id": 1
+  },
+  "version": "1"
+}
+```
+
+## Update an UserStory
+
+<ApiCodeBlock items={[endpoints[3]]} />
+
+Updates an UserStory based on the provided values.
+
+### Parameters
+
+---
+
+#### id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The UserStory's unique identifier.
+
+---
+
+#### user_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The ***[User](user)***'s id that own the UserStory.
+
+---
+
+#### anime_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The UserStory's ***[Anime](anime)***.
+
+---
+
+#### status <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The UserStory's watching status.
+
+---
+
+#### current_episode <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The UserStory's watching progress.
+Must be equal or less than the ***[Anime](anime)***'s `episodes_count` value.
+
+---
+
+#### current_episode_ticks <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The UserStory's `current_episode` watching time in milliseconds.
+
+---
+
+### Returns
+
+Returns the updated UserStory object.
+
+### Example
+
+```js title="Example UserStory update request"
+fetch('https://api.aniapi.com/v1/user_story', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <YOUR_JWT>',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  body: {
+    id: 27,
+    user_id: 1,
+    anime_id: 10,
+    status: 0,
+    current_episode: 140,
+    current_episode_ticks: 1200000
+  }
+});
+```
+
+```js title="Example UserStory update response"
+{
+  "status_code": 200,
+  "message": "Story updated",
+  "data": {
+    "user_id": 1,
+    "anime_id": 10,
+    "status": 0,
+    "current_episode": 140,
+    "current_episode_ticks": 1200000,
+    "id": 27
+  },
+  "version": "1"
+}
+```
+
+## Delete an UserStory
+
+<ApiCodeBlock items={[endpoints[4]]} />
+
+Deletes an UserStory based on the provided unique identifier.
+
+:::caution
+
+You should use this endpoint only when the User has zero linked trackers.
+Otherwise the UserStory will get re-imported!
+
+:::
+
+### Parameters
+
+No parameters.
+
+### Returns
+
+No particular return.
+
+### Example
+
+```js title="Example UserStory delete request"
+fetch('https://api.aniapi.com/v1/user_story/27', {
+  method: 'DELETE',
+  headers: {
+    'Authorization': 'Bearer <YOUR_JWT>',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
+});
+```
+
+```js title="Example UserStory delete response"
+{
+  "status_code": 200,
+  "message": "Story deleted",
+  "data": "",
+  "version": "1"
+}
+```

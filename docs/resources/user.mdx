@@ -1,0 +1,319 @@
+---
+sidebar_position: 4
+---
+
+# User
+
+import ApiCodeBlock from '../../src/components/ApiCodeBlock';
+import Highlight from '../../src/components/Highlight';
+import ApiTryIt from '../../src/components/ApiTryIt';
+
+export const endpoints = [
+  { method: 'GET', uri: '/v1/user/:id' },
+  { method: 'GET', uri: '/v1/user' },
+  { method: 'POST', uri: '/v1/user' },
+  { method: 'DELETE', uri: '/v1/user' }
+];
+
+This is an object representing an User.
+The API allows you to retrieve individual User as well as a list of them using various filters.
+Furthermore it lets you update and delete an User.
+
+<ApiCodeBlock title="Endpoints" items={endpoints} />
+
+## The User object
+
+### Attributes
+
+---
+
+#### id <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+Unique identifier for an User.
+
+---
+
+#### username <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The User's username.
+
+---
+
+#### email <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="confidential" />
+
+The User's email.
+
+:::note
+
+This field is obscured[^1] to not-authorized in order to avoid email adresses' collecting behaviours.
+
+:::
+
+---
+
+#### email_verified <Highlight bgColor="#8D46B8" color="white" content="bool" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="confidential" />
+
+Indicates if the User has already confirmed his email.
+
+:::note
+
+This field is obscured[^1] to not-authorized.
+
+:::
+
+---
+
+#### role <Highlight bgColor="#8D46B8" color="white" content="enum" />
+
+The User's role inside AniAPI.
+
+```js title="Possible role enum values"
+"BASIC": 0,
+"MODERATOR": 1,
+"ADMINISTRATOR": 2
+```
+
+---
+
+#### gender <Highlight bgColor="#8D46B8" color="white" content="enum" />
+
+The User's gender.
+
+```js title="Possible gender enum values"
+"UNKNOWN": 0,
+"MALE": 1,
+"FEMALE": 2
+```
+
+---
+
+#### localization <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="confidential" />
+
+The User's preferred locale reference.
+
+:::info
+
+Check on **[Resource](Resource#changelog-1)** for further details on locales.
+
+:::
+
+---
+
+#### has_anilist <Highlight bgColor="#8D46B8" color="white" content="bool" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+Indicates if the User has linked his ***[AniList](https://anilist.co/)*** account with AniAPI.
+
+---
+
+#### has_mal <Highlight bgColor="#8D46B8" color="white" content="bool" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+Indicates if the User has linked his ***[MyAnimeList](https://myanimelist.net/)*** account with AniAPI.
+
+:::warning
+
+For the moment **MyAnimeList**'s account linking is disabled because of missing APIs on their side!
+
+:::
+
+---
+
+### Example
+
+```js title="User object example"
+{
+  "username": "Dazorn",
+  "role": 0,
+  "gender": 1,
+  "id": 1
+}
+```
+
+## Retrieve a specific User
+
+<ApiCodeBlock items={[endpoints[0]]} />
+
+Retrieves an User, based on its unique identifier.
+
+### Parameters
+
+No parameters.
+
+### Returns
+
+Returns an obscured[^1] User object if a valid identifier was provided.
+
+### Try it
+
+export const retrieveUserParams = [
+  { name: ':id', type: 'number', placeholder: ':id', value: '1' }
+];
+
+<ApiTryIt items={retrieveUserParams} uri={endpoints[0].uri} />
+
+## Get a list of User
+
+<ApiCodeBlock items={[endpoints[1]]} />
+
+Returns a list of obscured[^1] User objects.
+The Users are returned sorted by `username`, following alphabetical ascending order.
+
+### Parameters
+
+---
+
+#### username <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A case-insensitive pattern filter on the list based on the `username` field value.
+
+---
+
+#### email <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A case-sensitive filter on the list based on the `email` field value.
+
+---
+
+### Returns
+
+Returns an array of obscured[^1] User objects with a size based on the filter provided.
+
+### Try it
+
+export const getListUserParams = [
+  { name: 'username', type: 'text', placeholder: 'username', value: 'Daz' },
+  { name: 'email', type: 'text', placeholder: 'email', value: '' }
+];
+
+<ApiTryIt items={getListUserParams} uri={endpoints[1].uri} />
+
+## Update an User
+
+:::warning
+
+We recommend you to not implement an User's update data form.
+
+Instead, we strongly suggest you to redirect the User to the **[profile](../../profile)** web page and to let us do the rest ♥.
+
+:::
+
+<ApiCodeBlock items={[endpoints[2]]} />
+
+Updates an User based on the provided values.
+
+### Parameters
+
+---
+
+#### id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The User's id to update
+
+---
+
+#### password <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+The User's new password value.
+
+---
+
+#### gender <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="required" />
+
+The User's gender value.
+
+---
+
+#### localization <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+The User's new localization value.
+
+---
+
+#### anilist_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+The User's ***[AniList](https://anilist.co/)*** account external id.
+
+---
+
+#### anilist_token <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+The User's ***[AniList](https://anilist.co/)*** account external token.
+This value becomes `required` when you provide the `anilist_id` field.
+
+---
+
+### Returns
+
+Returns the updated User object.
+
+### Example
+
+```js title="Example User update request"
+fetch('https://api.aniapi.com/v1/user', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer <YOUR_JWT>',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  },
+  body: {
+    id: 1,
+    gender: 1,
+    localization: 'it'
+  }
+});
+```
+
+```js title="Example User update response"
+{
+  "status_code": 200,
+  "message": "User updated",
+  "data": {
+    "username": "Dazorn",
+    "role": 0,
+    "gender": 1,
+    "localization": "it",
+    "has_anilist": true,
+    "has_mal": false,
+    "id": 1
+  },
+  "version": "1"
+}
+```
+
+## Delete an User
+
+<ApiCodeBlock items={[endpoints[3]]} />
+
+Deletes an User based on the provided unique identifier.
+
+### Parameters
+
+No parameters.
+
+### Returns
+
+No particular return.
+
+### Example
+
+```js title="Example User delete request"
+fetch('https://api.aniapi.com/v1/user/1', {
+  method: 'DELETE',
+  headers: {
+    'Authorization': 'Bearer <YOUR_JWT>',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
+});
+```
+
+```js title="Example User delete response"
+{
+  "status_code": 200,
+  "message": "User deleted",
+  "data": "",
+  "version": "1"
+}
+```
+
+[^1]: An obscured object has certain fields hidden

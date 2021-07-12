@@ -20,7 +20,10 @@
 }
 
 .method {
-  margin-right: .5rem;
+  display: inline-block;
+  min-width: 80px;
+  max-width: 80px;
+  width: 80px;
   margin-left: 1rem;
   font-weight: 700;
 }

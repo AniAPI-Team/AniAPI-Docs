@@ -23,19 +23,26 @@
   overflow: auto !important;
 }
 
-select {
-  margin: 8px 0;
-  padding: 12px 18px;
-  background-color: #151f2e;
-  border: 1px solid rgba(255, 255, 255, .1);
-  border-radius: 6px;
-  color: rgba(255, 255, 255, .6);
-  outline: none;
-  transition: .3s;
+.notSupported {
+  display: none;
 }
 
-select:focus, select:active {
-  border-color: rgba(255, 255, 255, .3);
-  color: white;
-  transition: .3s;
+.tryItCbox {
+  display: block;
+}
+
+@media screen and (max-width: 1280px) {
+  .items {
+    grid-template-columns: repeat(2, 240px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tryIt {
+    display: none;
+  }
+  
+  .notSupported {
+    display: block;
+  }
 }

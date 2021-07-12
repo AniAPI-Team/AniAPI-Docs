@@ -1,0 +1,153 @@
+---
+sidebar_position: 2
+---
+
+# Episode
+
+import ApiCodeBlock from '../../src/components/ApiCodeBlock';
+import Highlight from '../../src/components/Highlight';
+import ApiTryIt from '../../src/components/ApiTryIt';
+
+export const endpoints = [
+  { method: 'GET', uri: '/v1/episode/:id' },
+  { method: 'GET', uri: '/v1/episode' },
+];
+
+This is an object representing an Anime show's Episode.
+The API allows you to retrieve individual Episode as well as a list of them using various filters.
+
+<ApiCodeBlock title="Endpoints" items={endpoints} />
+
+## The Episode object
+
+### Attributes
+
+---
+
+#### id <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+Unique identifier for an Episode.
+
+---
+
+#### anime_id <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+***[Anime](anime)*** external unique identifier.
+
+---
+
+#### number <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+The episode's progressive number referring to the entire show.
+
+---
+
+#### title <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The episode's localized title.
+
+---
+
+#### video <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The episode's streaming url.
+
+---
+
+#### source <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The episode's website from which it has been imported.
+
+---
+
+#### locale <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The episode's website related locale.
+
+---
+
+### Example
+
+```js title="Episode object example"
+{
+  "anime_id": 11,
+  "number": 1,
+  "title": "Il ragazzo di gomma",
+  "video": "https://api.aniapi.com/v1/proxy/https%3a%2f%2fcdn2.dr...",
+  "source": "dreamsub",
+  "locale": "it",
+  "id": 485
+}
+```
+
+## Retrieve a specific Episode
+
+<ApiCodeBlock items={[endpoints[0]]} />
+
+Retrieves an Episode, based on its unique identifier.
+
+### Parameters
+
+No parameters.
+
+### Returns
+
+Returns an Episode object if a valid identifier was provided.
+
+### Try it
+
+export const retrieveEpisodeParams = [
+  { name: ':id', type: 'number', placeholder: ':id', value: '485' }
+];
+
+<ApiTryIt items={retrieveEpisodeParams} uri={endpoints[0].uri} />
+
+## Get a list of Episode
+
+<ApiCodeBlock items={[endpoints[1]]} />
+
+Returns a list of Episode object.
+The Episodes are returned sorted by `anime_id` and `number`.
+
+### Parameters
+
+---
+
+#### anime_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `anime_id` field value.
+
+---
+
+#### number <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `number` field value.
+
+---
+
+#### source <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A case-sensitive pattern filter on the list based on the `source` field value.
+
+---
+
+#### locale <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A case-sensitive pattern filter on the list based on the `locale` field value.
+
+---
+
+### Returns
+
+Returns an array of Episode objects with a size based on the filter provided.
+
+### Try it
+
+export const getListEpisodeParams = [
+  { name: 'anime_id', type: 'number', placeholder: 'anime_id', value: '11' },
+  { name: 'number', type: 'number', placeholder: 'number', value: '' },
+  { name: 'source', type: 'text', placeholder: 'source', value: 'dreamsub' },
+  { name: 'locale', type: 'text', placeholder: 'locale', value: 'it' }
+];
+
+<ApiTryIt items={getListEpisodeParams} uri={endpoints[1].uri} />

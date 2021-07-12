@@ -1,0 +1,103 @@
+---
+sidebar_position: 3
+---
+
+# Resource
+
+import ApiCodeBlock from '../../src/components/ApiCodeBlock';
+import Highlight from '../../src/components/Highlight';
+import ApiTryIt from '../../src/components/ApiTryIt';
+
+export const endpoints = [
+  { method: 'GET', uri: '/v1/resources' },
+  { method: 'GET', uri: '/v1/resources/:version/:type' },
+];
+
+AniAPI provides an endpoint to retrieve general purpose content, most of them utils.
+The API allows you to retrieve the last available Resources' version and retrieve individual Resource providing a version and a type.
+
+<ApiCodeBlock title="Endpoints" items={endpoints} />
+
+## Genres
+
+This is an `array of strings` containing all the availables `genre` value across AniAPI.
+
+### Changelog
+
+| Version | Description     |
+| ---     | ---             |
+| `1.0`   | Default values  |
+
+## Localizations
+
+This is an `array of objects` containing all the possible `locale` values inside AniAPI.
+
+### Attributes
+
+---
+
+#### i18n <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The locale's **[ISO 639‑1](https://en.wikipedia.org/wiki/ISO_639-1)** language code.
+
+---
+
+#### label <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The locale's description.
+
+---
+
+### Changelog
+
+| Version | Description                             |
+| ---     | ---                                     |
+| `1.0`   | Intial support for `en` and `it` values |
+
+## Retrieve last Resources' version
+
+<ApiCodeBlock items={[endpoints[0]]} />
+
+### Parameters
+
+No parameters.
+
+### Returns
+
+Returns a `string` which identifies the latest avaialable Resources' version.
+
+:::caution
+
+Older resources' versions **will be available forever**, in order to serve also external services that doesn't follow our updates.
+
+:::
+
+### Try it
+
+<ApiTryIt uri={endpoints[0].uri} />
+
+## Retrieve a specific Resource
+
+<ApiCodeBlock items={[endpoints[1]]} />
+
+### Type
+
+```js title="Possible type enum values"
+"GENRES": 0,
+"LOCALIZATIONS": 1
+```
+
+---
+
+### Returns
+
+Returns a Resource object according to the `version` and `type` values provided.
+
+### Try it
+
+export const getResourceParams = [
+  { name: ':version', type: 'text', placeholder: ':version', value: '1.0' },
+  { name: ':type', type: 'number', placeholder: ':type', value: '0' }
+];
+
+<ApiTryIt items={getResourceParams} uri={endpoints[1].uri} />
