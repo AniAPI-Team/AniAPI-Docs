@@ -49,6 +49,12 @@ module.exports = {
           prependBaseUrlToHref: false,
           className: 'navbar-github-link',
           position: 'right'
+        },
+        {
+          to: 'https://discord.gg/xQjZx5aWkR',
+          prependBaseUrlToHref: false,
+          className: 'navbar-discord-link',
+          position: 'right'
         }
       ],
     },
@@ -59,26 +65,30 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Introduction',
               to: '/docs/',
             },
+            {
+              label: 'OAuth',
+              to: '/docs/oauth/implicit_grant'
+            },
+            {
+              label: 'Resources',
+              to: '/docs/resources/anime'
+            }
           ],
         },
         {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Github',
+              href: 'https://github.com/AniAPI-Team',
             },
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
+              href: 'https://discord.gg/xQjZx5aWkR',
+            }
           ],
         },
         {
@@ -87,11 +97,7 @@ module.exports = {
             {
               label: 'Blog',
               to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
+            }
           ],
         },
       ],
