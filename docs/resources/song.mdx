@@ -1,0 +1,219 @@
+---
+sidebar_position: 3
+---
+
+# Song
+
+
+import ApiCodeBlock from '../../src/components/ApiCodeBlock';
+import Highlight from '../../src/components/Highlight';
+import ApiTryIt from '../../src/components/ApiTryIt';
+
+export const endpoints = [
+  { method: 'GET', uri: '/v1/song/:id' },
+  { method: 'GET', uri: '/v1/song' },
+];
+
+This is an object representing an Anime show's opening or ending song.
+The API allows you to retrieve individual Song as well as a list of them using various filters.
+
+<ApiCodeBlock title="Endpoints" items={endpoints} />
+
+## The Song object
+
+### Attributes
+
+---
+
+#### id <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+Unique identifier for a Song.
+
+---
+
+#### anime_id <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+***[Anime](anime)*** external unique identifier.
+
+---
+
+#### title <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The song's original title.
+
+---
+
+#### artist <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The song's artist name.
+
+---
+
+#### album <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The song's album name.
+
+---
+
+#### year <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+The song's release year.
+
+---
+
+#### season <Highlight bgColor="#8D46B8" color="white" content="enum" />
+
+The song's release season.
+
+```js title="Possible season enum values"
+"WINTER": 0,
+"SPRING": 1,
+"SUMMER": 2,
+"FALL": 3,
+"UNKNOWN": 4
+```
+
+---
+
+#### duration <Highlight bgColor="#8D46B8" color="white" content="integer" />
+
+The song's duration in milliseconds.
+
+---
+
+#### preview_url <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The song's Spotify preview url, which provides ~`30` seconds of the song.
+
+---
+
+#### open_spotify_url <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The song's ***[Spotify Web Player](https://open.spotify.com/)*** url to listen to it.
+
+---
+
+#### local_spotify_url <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The song's ***[Spotify App](https://www.spotify.com/it/download/)*** url to listen to it.
+This url will open your local Spotify application automatically.
+
+---
+
+#### type <Highlight bgColor="#8D46B8" color="white" content="enum" />
+
+The song's type.
+
+```js title="Possible type enum values"
+"OPENING": 0,
+"ENDING": 1,
+"NONE": 2
+```
+
+---
+
+### Example
+
+```js title="Song object example"
+{
+  "anime_id": 1,
+  "title": "The Real Folk Blues",
+  "artist": "Mai Yamane",
+  "album": "COWBOY BEBOP Vitaminless",
+  "year": 1998,
+  "season": 1,
+  "duration": 377066,
+  "preview_url": "https://p.scdn.co/mp3-preview/a2226076e4b89e16d8827189fd32da4535d369b4?cid=b074c52808fb4394a28785f381872ea2",
+  "open_spotify_url": "https://open.spotify.com/track/5Cmf3LmbLd9g79rS55X7qK",
+  "local_spotify_url": "spotify:track:5Cmf3LmbLd9g79rS55X7qK",
+  "type": 1,
+  "id": 1
+}
+```
+
+## Retrieve a specific Song
+
+<ApiCodeBlock items={[endpoints[0]]} />
+
+Retrieves an Anime show's Song, based on its unique identifier.
+
+### Parameters
+
+No parameters.
+
+### Returns
+
+Returns a Song object if a valid identifier was provided.
+
+### Try it
+
+export const retrieveSongParams = [
+  { name: ':id', type: 'number', placeholder: ':id', value: '11' }
+];
+
+<ApiTryIt items={retrieveSongParams} uri={endpoints[0].uri} />
+
+
+## Get a list of Song
+
+<ApiCodeBlock items={[endpoints[1]]} />
+
+Returns a list of Song objects.
+The Songs are returned sorted by `year` descending, after by `season` descending.
+
+### Parameters
+
+---
+
+#### anime_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `anime_id` field value.
+
+---
+
+#### title <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A case-insensitive pattern filter on the list based on the `title` field value.
+
+---
+
+#### artist <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A case-insensitive pattern filter on the list based on the `artist` field value.
+
+---
+
+#### year <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `year` field value.
+
+---
+
+#### season <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `season` field value.
+
+---
+
+#### type <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `type` field value.
+
+---
+
+### Returns
+
+Returns an array of Anime objects with a size based on the filter provided.
+
+### Try it
+
+export const getListSongParams = [
+  { name: 'anime_id', type: 'number', placeholder: 'anime_id', value: '10' },
+  { name: 'title', type: 'text', placeholder: 'title', value: '' },
+  { name: 'artist', type: 'text', placeholder: 'artist', value: 'FLOW' },
+  { name: 'year', type: 'text', placeholder: 'year', value: '' },
+  { name: 'season', type: 'text', placeholder: 'season', value: '' },
+  { name: 'type', type: 'text', placeholder: 'type', value: '' },
+];
+
+<ApiTryIt items={getListSongParams} uri={endpoints[1].uri} />
