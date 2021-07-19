@@ -48,12 +48,21 @@ module.exports = {
           to: 'https://github.com/AniAPI-Team/AniAPI',
           prependBaseUrlToHref: false,
           className: 'navbar-github-link',
+          title: 'Github',
           position: 'right'
         },
         {
           to: 'https://discord.gg/xQjZx5aWkR',
           prependBaseUrlToHref: false,
           className: 'navbar-discord-link',
+          title: 'Join discord',
+          position: 'right'
+        },
+        {
+          to: 'https://paypal.me/pools/c/8Bjc9dtmwM',
+          prependBaseUrlToHref: false,
+          className: 'navbar-paypal-link',
+          title: 'Support us',
           position: 'right'
         }
       ],
