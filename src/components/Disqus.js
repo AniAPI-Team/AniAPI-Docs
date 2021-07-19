@@ -3,12 +3,10 @@ import Disqus from 'disqus-react';
 
 export default function DisqusComments(params) {
   const config = {
-    url: 'http://aniapi.com',
+    url: `https://aniapi.com/blog/${params.identifier}`,
     identifier: params.identifier,
     title: params.title
   };
-
-  console.log(config);
 
   return (
     <Disqus.DiscussionEmbed
