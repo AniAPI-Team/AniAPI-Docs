@@ -5,17 +5,42 @@ sidebar_position: 6
 # Pagination
 
 All API resources have support for **bulk fetches** via *list* API methods.
-These methods share a common structure, which allows three additional parameters:
+These methods share a common structure, which allows six additional parameters:
 
-| Name          | Default   | Description                                                               |
-| ---           | ---       | ---                                                                       |
-| `locale`      | `en`      | Indicates the resource's desired localization                             |
-| `page`        | `1`       | Indicates the list page to fetch                                          |
-| `per_page`    | `100`     | Indicates the desired results number on each page (max value is `100`)    |
+| Name              | Default   | Description                                                                                       |
+| ---               | ---       | ---                                                                                               |
+| `locale`          | `en`      | Indicates the resource's desired localization                                                     |
+| `page`            | `1`       | Indicates the list page to fetch                                                                  |
+| `per_page`        | `100`     | Indicates the desired results number on each page (max value is `100`)                            |
+| `ids`             | `[]`      | An array filter you can apply on the `id` field of results                                        |
+| `sort_fields`     | `[]`      | An array of fields to apply a specific sort on the results                                        |
+| `sort_directions` | `[]`      | An array of integers (`1` or `-1`) to specify the sort direction on each field in `sort_fields`   |
 
 :::info
 
 Actually `locale` parameter is used on few resource types
+
+:::
+
+:::caution
+
+When sorting, if you did not provide a `direction` for a `field`, **AniAPI** will use `1` as default
+
+:::
+
+## Resources structure
+
+Every *Resource* of **AniAPI** comes with a default set of fields:
+
+| Name              | Description                           |
+| ---               | ---                                   |
+| `creation_date`   | The document's creation datetime      |
+| `update_date`     | The document's last update datetime   |
+
+:::caution
+
+These fields are not returned from API fetches.
+Them are just used for sorting's scopes.
 
 :::
 
