@@ -65,11 +65,13 @@ export default function ApiTryIt(props) {
         if (typeof (value.value) === 'string' && value.value.indexOf(',') !== -1) {
           const _values = value.value.split(',');
 
+          _uri += `${value.name}=`;
+
           for (let j = 0; j < _values.length; j++) {
-            _uri += `${value.name}=${encodeURIComponent(_values[j])}`;
+            _uri += `${encodeURIComponent(_values[j])}`;
 
             if ((j + 1) < _values.length) {
-              _uri += '&';
+              _uri += ',';
             }
           }
         }
