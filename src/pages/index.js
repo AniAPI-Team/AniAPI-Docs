@@ -21,6 +21,14 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
 
   const wrappers = [
+    {
+      name: 'AniAPI.NET',
+      author: 'Dazorn96',
+      github: 'https://github.com/AniAPI-Team/AniAPI.NET',
+      language: 'C#',
+      bgColor: '#783bd2',
+      fgColor: '#fff'
+    }
     /*
     REFER TO THIS EXAMPLE. PLEASE LEAVE IT HERE, DO NOT CLEAR IT!
     {
