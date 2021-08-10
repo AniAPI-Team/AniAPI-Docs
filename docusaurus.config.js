@@ -40,6 +40,11 @@ module.exports = {
           position: 'left'
         },
         {
+          to: 'https://opencollective.com/aniapi',
+          label: 'Help us',
+          position: 'right'
+        },
+        {
           to: 'login',
           label: 'Login',
           position: 'right'
@@ -56,13 +61,6 @@ module.exports = {
           prependBaseUrlToHref: false,
           className: 'navbar-discord-link',
           title: 'Join discord',
-          position: 'right'
-        },
-        {
-          to: 'https://paypal.me/pools/c/8Bjc9dtmwM',
-          prependBaseUrlToHref: false,
-          className: 'navbar-paypal-link',
-          title: 'Support us',
           position: 'right'
         }
       ],
@@ -106,6 +104,10 @@ module.exports = {
             {
               label: 'Blog',
               to: '/blog',
+            },
+            {
+              label: 'Help us',
+              to: 'https://opencollective.com/aniapi'
             }
           ],
         },
