@@ -28,6 +28,14 @@ export default function Home() {
       language: 'C#',
       bgColor: '#783bd2',
       fgColor: '#fff'
+    },
+    {
+      name: 'AniAPI-Wrapper',
+      author: 'MattPlays',
+      github: 'https://github.com/MattPlays/AniAPI-Wrapper',
+      language: 'JS',
+      bgColor: '#f7df1e',
+      fgColor: '#000'
     }
     /*
     REFER TO THIS EXAMPLE. PLEASE LEAVE IT HERE, DO NOT CLEAR IT!
