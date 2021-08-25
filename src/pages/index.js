@@ -30,9 +30,9 @@ export default function Home() {
       fgColor: '#fff'
     },
     {
-      name: 'AniAPI-Wrapper',
+      name: 'AniAPI.js',
       author: 'MattPlays',
-      github: 'https://github.com/MattPlays/AniAPI-Wrapper',
+      github: 'https://github.com/MattPlays/AniAPI.js',
       language: 'JS',
       bgColor: '#f7df1e',
       fgColor: '#000'
