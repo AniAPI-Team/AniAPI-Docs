@@ -12,11 +12,7 @@
       "program": "${workspaceFolder}/node_modules/@docusaurus/core/bin/docusaurus.js",
       "args": [
         "start"
-      ],
-      "env": {
-        "API_URL": "https://localhost:5001",
-        "ANILIST_CLIENTID": "3615"
-      }
+      ]
     }
   ]
 }

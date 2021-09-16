@@ -24,14 +24,20 @@ jobs:
         with:
           node-version: "12"
 
+      - name: Create .env file
+        run: |
+          cat << EOF >>.env
+          API_URL=${{ secrets.API_URL }}
+          ANILIST_CLIENTID=${{ secrets.ANILIST_CLIENTID }}
+          MAL_CLIENTID=${{ secrets.MAL_CLIENTID }}
+          MAL_CLIENTSECRET=${{ secrets.MAL_CLIENTSECRET }}
+          EOF
+
       # Install and build Docusaurus website
       - name: Build Docusaurus website
         run: |
           npm install 
           npm run build
-        env:
-          API_URL: ${{ secrets.API_URL }}
-          ANILIST_CLIENTID: ${{ secrets.ANILIST_CLIENTID }}
 
       - name: Deploy to GitHub Pages
         if: success()

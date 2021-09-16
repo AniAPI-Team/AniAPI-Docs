@@ -35,13 +35,6 @@ export default function Profile() {
 
       user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
 
-      const challenge = PkceChallenge();
-      setMalURL(`https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=${process.env.MAL_CLIENTID}&state=${challenge.code_challenge}&code_challenge=${challenge.code_challenge}&code_challenge_method=plain`);
-      window.localStorage.setItem('MAL_CHALLENGE', JSON.stringify(challenge));
-
-      console.log(challenge);
-      console.log(malURL);
-
       setId(user.id);
       setUsername(user.username);
       setAccessToken(user.access_token);
@@ -49,9 +42,11 @@ export default function Profile() {
       setGender(user.gender);
 
       await loadLocalizations();
+      await loadMalURL();
     }
-    catch {
-      window.location.replace('/login');
+    catch (ex) {
+      console.error(ex);
+      //window.location.replace('/login');
     }
 
     for (let i = 0; i < sideItems.length; i++) {
@@ -68,6 +63,14 @@ export default function Profile() {
       document.getElementById('anilist-tracker').classList.add(styles.trackerActive);
     }
   }, []);
+
+  const loadMalURL = async () => {
+    const challenge = PkceChallenge();
+    setMalURL(`https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=${process.env.MAL_CLIENTID}&state=${challenge.code_challenge}&code_challenge=${challenge.code_challenge}&code_challenge_method=plain`);
+    window.localStorage.setItem('MAL_CHALLENGE', JSON.stringify(challenge));
+
+    console.log(challenge);
+  }
 
   const loadLocalizations = async () => {
     const version = await fetch(`${process.env.API_URL}/v1/resources`, {
