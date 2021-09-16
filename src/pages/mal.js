@@ -17,40 +17,44 @@ export default function Mal() {
 
   useEffect(async () => {
     const query = Object.fromEntries(new URLSearchParams(window.location.search).entries());
-    console.log(query);
 
-    const challenge = JSON.parse(window.localStorage.getItem('MAL_CHALLENGE'));
-    console.log(challenge);
-    const state = challenge.code_challenge;
+    const challenge = window.localStorage.getItem('MAL_CHALLENGE');
 
-    if (state !== query.state) {
+    if (challenge !== query.state) {
       window.location.replace('/login');
     }
 
-    // CONTINUARE QUI
-
-    const user = await getToken(query.code, challenge.code_verifier);
-    console.log(user);
+    const user = await getToken(query.code, challenge);
 
     await updateUser(user.token, user.id);
   }, []);
 
   const getToken = async (code, code_verifier) => {
     try {
-      const url = `https://myanimelist.net/v1/oauth2/token?client_id=${process.env.MAL_CLIENTID}&client_secret=${process.env.MAL_CLIENTSECRET}&grant_type=authorization_code&code=${code}&code_verifier=${code_verifier}`;
-      const response = await fetch(url, {
+      const payload = {
+        client_id: process.env.MAL_CLIENTID,
+        client_secret: process.env.MAL_CLIENTSECRET,
+        grant_type: 'authorization_code',
+        code: code,
+        code_verifier: code_verifier
+      };
+
+      var formBody = [];
+      for (var p in payload) {
+        formBody.push(`${encodeURIComponent(p)}=${encodeURIComponent(payload[p])}`);
+      }
+      formBody = formBody.join('&');
+
+      const response = await fetch('https://cors-anywhere.herokuapp.com/myanimelist.net/v1/oauth2/token', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formBody
       });
 
-      console.log(response);
-
       const body = await response.json();
-
-      console.log(body);
 
       const id = await getUserId(body.access_token);
 
@@ -60,14 +64,13 @@ export default function Mal() {
       };
     }
     catch (ex) {
-      console.error(ex);
-      //window.location.replace('/profile#trackers');
+      window.location.replace('/profile#trackers');
     }
   }
 
   const getUserId = async (access_token) => {
     try{
-      const response = await fetch('https://api.myanimelist.net/v2/users/@me', {
+      const response = await fetch('https://cors-anywhere.herokuapp.com/api.myanimelist.net/v2/users/@me', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${access_token}`,
@@ -76,17 +79,12 @@ export default function Mal() {
         }
       });
 
-      console.log(response);
-
-      const body = response.json();
-
-      console.log(body);
+      const body = await response.json();
 
       return body.id;
     }
     catch (ex) {
-      console.error(ex);
-      //window.location.replace('/profile#trackers');
+      window.location.replace('/profile#trackers');
     }
   }
 
@@ -108,8 +106,7 @@ export default function Mal() {
     const body = await response.json();
 
     if (body.status_code === 200) {
-      user.mal_id = body.data.mal_id;
-      user.mal_token = body.data.mal_token;
+      user.has_mal = body.data.has_mal;
       window.localStorage.setItem('AUTH_USER', JSON.stringify(user));
     }
 

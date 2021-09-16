@@ -45,8 +45,7 @@ export default function Profile() {
       await loadMalURL();
     }
     catch (ex) {
-      console.error(ex);
-      //window.location.replace('/login');
+      window.location.replace('/login');
     }
 
     for (let i = 0; i < sideItems.length; i++) {
@@ -62,14 +61,15 @@ export default function Profile() {
     if (user.has_anilist) {
       document.getElementById('anilist-tracker').classList.add(styles.trackerActive);
     }
+    if (user.has_mal) {
+      document.getElementById('mal-tracker').classList.add(styles.trackerActive);
+    }
   }, []);
 
   const loadMalURL = async () => {
     const challenge = PkceChallenge();
-    setMalURL(`https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=${process.env.MAL_CLIENTID}&state=${challenge.code_challenge}&code_challenge=${challenge.code_challenge}&code_challenge_method=plain`);
-    window.localStorage.setItem('MAL_CHALLENGE', JSON.stringify(challenge));
-
-    console.log(challenge);
+    setMalURL(`https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=${process.env.MAL_CLIENTID}&state=${challenge}&code_challenge=${challenge}&code_challenge_method=plain`);
+    window.localStorage.setItem('MAL_CHALLENGE', challenge);
   }
 
   const loadLocalizations = async () => {

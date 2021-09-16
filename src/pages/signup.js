@@ -41,7 +41,7 @@ export default function Signup() {
     }
 
     loadScript('recaptcha-key', `https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`, () => {
-      console.log('ReCAPTCHA loaded!');
+      
     });
   }, []);
 

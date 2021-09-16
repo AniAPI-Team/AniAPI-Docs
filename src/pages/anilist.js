@@ -70,8 +70,7 @@ export default function Anilist() {
     const body = await response.json();
 
     if (body.status_code === 200) {
-      user.anilist_id = body.data.anilist_id;
-      user.anilist_token = body.data.anilist_token;
+      user.has_anilist = body.data.has_anilist;
       window.localStorage.setItem('AUTH_USER', JSON.stringify(user));
     }
 
