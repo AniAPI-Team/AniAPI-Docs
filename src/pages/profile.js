@@ -4,8 +4,12 @@ import Layout from '@theme/Layout';
 import CodeBlock from '@theme/CodeBlock';
 import styles from './profile.module.css';
 
+import PkceChallenge from '../components/PkceChallenge';
+
 export default function Profile() {
   const anilistURL = `https://anilist.co/api/v2/oauth/authorize?client_id=${process.env.ANILIST_CLIENTID}&response_type=token`;
+
+  const [malURL, setMalURL] = useState('');
 
   let sideItems;
   let panels;
@@ -30,6 +34,13 @@ export default function Profile() {
       panels = document.getElementsByClassName(styles.panel);
 
       user = JSON.parse(window.localStorage.getItem('AUTH_USER'));
+
+      const challenge = PkceChallenge();
+      setMalURL(`https://myanimelist.net/v1/oauth2/authorize?response_type=code&client_id=${process.env.MAL_CLIENTID}&state=${challenge.code_challenge}&code_challenge=${challenge.code_challenge}&code_challenge_method=plain`);
+      window.localStorage.setItem('MAL_CHALLENGE', JSON.stringify(challenge));
+
+      console.log(challenge);
+      console.log(malURL);
 
       setId(user.id);
       setUsername(user.username);
@@ -297,9 +308,9 @@ export default function Profile() {
                     href={anilistURL}>
                     <img src="/img/anilist_logo.png" />
                   </a>
-                  <a className={`${styles.tracker} ${styles.mal} ${styles.trackerDisabled}`}
+                  <a className={`${styles.tracker} ${styles.mal}`}
                     id="mal-tracker"
-                    href="">
+                    href={malURL}>
                     <img src="/img/mal_logo.jpg" />
                   </a>
                 </div>

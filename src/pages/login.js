@@ -55,6 +55,8 @@ export default function Login() {
     if (e.which === 13) {
       document.getElementById('password').focus();
     }
+
+    setEmail(email.toLowerCase());
   }
 
   const onPasswordKeyPress = (e) => {
