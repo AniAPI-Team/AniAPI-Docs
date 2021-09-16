@@ -23,6 +23,7 @@ export default function Profile() {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [gender, setGender] = useState(0);
   const [locale, setLocale] = useState('');
+  const [avatar, setAvatar] = useState('');
 
   const [locales, setLocales] = useState([]);
 
@@ -40,6 +41,7 @@ export default function Profile() {
       setAccessToken(user.access_token);
       setLocale(user.localization);
       setGender(user.gender);
+      setAvatar(user.avatar_tracker ? user.avatar_tracker : 'none');
 
       await loadLocalizations();
       await loadMalURL();
@@ -160,6 +162,7 @@ export default function Profile() {
       payload.gender = gender;
     }
 
+    payload.avatar_tracker = avatar;
     payload.id = id;
 
     const response = await fetch(`${process.env.API_URL}/v1/user`, {
@@ -288,6 +291,30 @@ export default function Profile() {
                       value={2}
                       checked={gender === 2}
                       onChange={e => setGender(2)} />
+                  </div>
+                  <h4 className={styles.inputLabel}>Avatar</h4>
+                  <div className={styles.avatar}>
+                    <label>None</label>
+                    <input type="radio"
+                      name="avatar"
+                      id="avatar-none"
+                      value="none"
+                      checked={avatar === "none"}
+                      onChange={e => setAvatar("none")} />
+                    <label>AniList</label>
+                    <input type="radio"
+                      name="avatar"
+                      id="avatar-anilist"
+                      value="anilist"
+                      checked={avatar === "anilist"}
+                      onChange={e => setAvatar("anilist")} />
+                    <label>MyAnimeList</label>
+                    <input type="radio"
+                      name="avatar"
+                      id="avatar-mal"
+                      value="mal"
+                      checked={avatar === "mal"}
+                      onChange={e => setAvatar("mal")} />
                   </div>
                   <div id="errors"
                     className={styles.errors}></div>

@@ -75,12 +75,17 @@
 }
 
 .genres {
-  margin-bottom: 1.5rem;
+  /*margin-bottom: 1.5rem;*/
 }
 
-.genres input {
+.genres input,
+.avatar input {
   margin-left: .4rem;
   margin-right: 2rem;
+}
+
+.avatar {
+  margin-bottom: 1.5rem;
 }
 
 .errors {
