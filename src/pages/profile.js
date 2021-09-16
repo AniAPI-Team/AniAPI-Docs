@@ -182,6 +182,7 @@ export default function Profile() {
 
       user.gender = gender;
       user.localization = locale;
+      user.avatar_tracker = avatar;
 
       window.localStorage.setItem('AUTH_USER', JSON.stringify(user));
 
