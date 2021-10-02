@@ -336,6 +336,12 @@ A case-sensitive pattern filter on the list based on the `genres` field values.
 
 ---
 
+#### nsfw <Highlight bgColor="#8D46B8" color="white" content="bool" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list which excludes Anime classified as **Not Safe For Work**.
+
+---
+
 ### Returns
 
 Returns an array of Anime objects with a size based on the filter provided.
@@ -351,6 +357,7 @@ export const getListAnimeParams = [
   { name: 'year', type: 'number', placeholder: 'year', value: '1999' },
   { name: 'season', type: 'text', placeholder: 'season', value: '3' },
   { name: 'genres', type: 'text', placeholder: 'genres', value: 'Pirates,War,Cyborg' },
+  { name: 'nsfw', type: 'checkbox', placeholder: 'nsfw', value: true },
 ];
 
 <ApiTryIt items={getListAnimeParams} uri={endpoints[1].uri} />
