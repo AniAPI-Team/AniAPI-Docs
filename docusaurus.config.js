@@ -17,6 +17,10 @@ module.exports = {
       apiKey: '',
       indexName: ''
     },*/
+    gtag: {
+      trackingID: 'G-JBHTBTX1HR',
+      anonymizeIP: true
+    },
     colorMode: {
       defaultMode: 'dark',
       disableSwitch: true
@@ -137,10 +141,6 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        },
-        gtag: {
-          trackingID: 'G-JBHTBTX1HR',
-          anonymizeIP: true
         }
       },
     ],
