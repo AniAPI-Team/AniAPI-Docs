@@ -24,7 +24,7 @@ export default function Home() {
     {
       name: 'AniAPI.NET',
       author: 'Dazorn96',
-      github: 'https://github.com/AniAPI-Team/AniAPI.NET',
+      github: 'https://github.com/well300',
       language: 'C#',
       bgColor: '#783bd2',
       fgColor: '#fff'
@@ -32,7 +32,7 @@ export default function Home() {
     {
       name: 'AniAPI.js',
       author: 'MattPlays',
-      github: 'https://github.com/MattPlays/AniAPI.js',
+      github: 'https://github.com/well300',
       language: 'JS',
       bgColor: '#f7df1e',
       fgColor: '#000'
