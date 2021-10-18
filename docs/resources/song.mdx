@@ -12,6 +12,7 @@ import ApiTryIt from '../../src/components/ApiTryIt';
 export const endpoints = [
   { method: 'GET', uri: '/v1/song/:id' },
   { method: 'GET', uri: '/v1/song' },
+  { method: 'GET', uri: '/v1/random/song/:count' },
 ];
 
 This is an object representing an Anime show's opening or ending song.
@@ -217,3 +218,25 @@ export const getListSongParams = [
 ];
 
 <ApiTryIt items={getListSongParams} uri={endpoints[1].uri} />
+
+## Retrieve random Songs
+
+<ApiCodeBlock items={[endpoints[2]]} />
+
+Retrieves a random Anime show's Song list.
+
+### Parameters
+
+No parameters.
+
+### Returns
+
+Returns a random Song list.
+
+### Try it
+
+export const retrieveRandomSongParams = [
+  { name: ':count', type: 'number', placeholder: ':count', value: '5' }
+];
+
+<ApiTryIt items={retrieveRandomSongParams} uri={endpoints[2].uri} />

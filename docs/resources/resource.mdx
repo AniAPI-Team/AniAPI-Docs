@@ -24,9 +24,9 @@ This is an `array of strings` containing all the availables `genre` value across
 
 ### Changelog
 
-| Version | Description     |
-| ---     | ---             |
-| `1.0`   | Default values  |
+| Version | Description           |
+| ---     | ---                   |
+| `1.0`   | Default values        |
 
 ## Localizations
 
@@ -53,6 +53,32 @@ The locale's description.
 | Version | Description                             |
 | ---     | ---                                     |
 | `1.0`   | Intial support for `en` and `it` values |
+
+## Sources
+
+This is an `array of objects` containing all the supported sources for `episodes` in AniAPI.
+
+### Attributes
+
+---
+
+#### i18n <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The source's **[ISO 639‑1](https://en.wikipedia.org/wiki/ISO_639-1)** language code.
+
+---
+
+#### name <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The source's name inside ***[Episode](episode)***.
+
+---
+
+### Changelog
+
+| Version | Description    |
+| ---     | ---            |
+| `1.0`   | Default values |
 
 ## Retrieve last Resources' version
 
@@ -84,7 +110,8 @@ Older Resources' versions **will be available forever**, in order to serve also 
 
 ```js title="Possible type enum values"
 "GENRES": 0,
-"LOCALIZATIONS": 1
+"LOCALIZATIONS": 1,
+"SOURCES": 2
 ```
 
 ---
