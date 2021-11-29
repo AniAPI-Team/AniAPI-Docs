@@ -36,6 +36,14 @@ export default function Home() {
       language: 'JS',
       bgColor: '#f7df1e',
       fgColor: '#000'
+    },
+    {
+      name: 'AniAPI Java SDK',
+      author: 'censodev',
+      github: 'https://github.com/censodev/aniapi-java-sdk',
+      language: 'Java',
+      bgColor: '#68BD45',
+      fgColor: '#fff'
     }
     /*
     REFER TO THIS EXAMPLE. PLEASE LEAVE IT HERE, DO NOT CLEAR IT!
