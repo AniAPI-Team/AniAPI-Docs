@@ -11,7 +11,7 @@ import ApiTryIt from '../../src/components/ApiTryIt';
 export const endpoints = [
   { method: 'GET', uri: '/v1/anime/:id' },
   { method: 'GET', uri: '/v1/anime' },
-  { method: 'GET', uri: '/v1/random/anime/:count' }
+  { method: 'GET', uri: '/v1/random/anime/:count/:nsfw' }
 ];
 
 This is an object representing an Anime show.
@@ -379,7 +379,8 @@ Returns a random Anime list.
 ### Try it
 
 export const retrieveRandomAnimeParams = [
-  { name: ':count', type: 'number', placeholder: ':count', value: '5' }
+  { name: ':count', type: 'number', placeholder: ':count', value: '5' },
+  { name: ':nsfw', type: 'checkbox', placeholder: 'nsfw', value: true }
 ];
 
 <ApiTryIt items={retrieveRandomAnimeParams} uri={endpoints[2].uri} />
