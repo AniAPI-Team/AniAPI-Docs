@@ -112,6 +112,10 @@ module.exports = {
             {
               label: 'Help us',
               to: 'https://opencollective.com/aniapi'
+            },
+            {
+              label: 'Status',
+              to: 'https://status.aniapi.com'
             }
           ],
         },
