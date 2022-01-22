@@ -39,12 +39,7 @@ module.exports = {
           label: 'Docs'
         },
         {
-          to: '/blog/',
-          label: 'Blog',
-          position: 'left'
-        },
-        {
-          to: 'https://opencollective.com/aniapi',
+          to: 'https://patreon.com/aniapi',
           label: 'Help us',
           position: 'right'
         },
@@ -106,12 +101,8 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
               label: 'Help us',
-              to: 'https://opencollective.com/aniapi'
+              to: 'https://patreon.com/aniapi'
             },
             {
               label: 'Status',
@@ -133,12 +124,6 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/AniAPI-Team/AniAPI-Docs/edit/main/',
-        },
-        blog: {
-          showReadingTime: true,
           // Please change this to your repo.
           editUrl:
             'https://github.com/AniAPI-Team/AniAPI-Docs/edit/main/',
