@@ -39,13 +39,15 @@ module.exports = {
           label: 'Docs'
         },
         {
-          to: 'https://patreon.com/aniapi',
-          label: 'Help us',
+          to: 'login',
+          label: 'Login',
           position: 'right'
         },
         {
-          to: 'login',
-          label: 'Login',
+          to: 'https://patreon.com/aniapi',
+          prependBaseUrlToHref: false,
+          className: 'navbar-patreon-link',
+          title: 'Patreon',
           position: 'right'
         },
         {
@@ -101,7 +103,7 @@ module.exports = {
           title: 'More',
           items: [
             {
-              label: 'Help us',
+              label: 'Patreon',
               to: 'https://patreon.com/aniapi'
             },
             {

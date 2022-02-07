@@ -54,15 +54,27 @@ The episode's streaming url.
 
 ---
 
-#### source <Highlight bgColor="#8D46B8" color="white" content="string" />
-
-The episode's website from which it has been imported.
-
----
-
 #### locale <Highlight bgColor="#8D46B8" color="white" content="string" />
 
 The episode's website related locale.
+
+---
+
+#### quality <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+The episode's streaming quality.
+
+---
+
+#### format <Highlight bgColor="#8D46B8" color="white" content="string" />
+
+The episode's streaming codec format.
+
+---
+
+#### is_dub <Highlight bgColor="#8D46B8" color="white" content="bool" />
+
+Indicates if the episode is dubbed or subbed.
 
 ---
 
@@ -74,8 +86,10 @@ The episode's website related locale.
   "number": 1,
   "title": "Il ragazzo di gomma",
   "video": "https://api.aniapi.com/v1/proxy/https%3a%2f%2fcdn2.dr...",
-  "source": "dreamsub",
   "locale": "it",
+  "quality": 1080,
+  "format": "mp4",
+  "is_dub": false,
   "id": 485
 }
 ```
@@ -127,7 +141,7 @@ A filter on the list based on the `number` field value.
 
 #### source <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
 
-A case-sensitive pattern filter on the list based on the `source` field value.
+A case-sensitive pattern filter on the list based on the `is_dub` field value.
 
 ---
 
@@ -146,7 +160,7 @@ Returns an array of Episode objects with a size based on the filter provided.
 export const getListEpisodeParams = [
   { name: 'anime_id', type: 'number', placeholder: 'anime_id', value: '11' },
   { name: 'number', type: 'number', placeholder: 'number', value: '' },
-  { name: 'source', type: 'text', placeholder: 'source', value: 'dreamsub' },
+  { name: 'is_dub', type: 'checkbox', placeholder: 'is_dub', value: true },
   { name: 'locale', type: 'text', placeholder: 'locale', value: 'it' }
 ];
 
