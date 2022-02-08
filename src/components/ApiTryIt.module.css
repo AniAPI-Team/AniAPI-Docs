@@ -31,6 +31,18 @@
   display: block;
 }
 
+.codeBlockContainer {
+  position: relative;
+}
+
+.loading {
+  position: absolute;
+  right: 8px;
+  top: 60px;
+  color: var(--ifm-color-primary);
+  z-index: 1;
+}
+
 @media screen and (max-width: 1280px) {
   .items {
     grid-template-columns: repeat(2, 240px);

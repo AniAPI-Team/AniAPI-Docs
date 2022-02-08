@@ -46,21 +46,21 @@ module.exports = {
         {
           to: 'https://patreon.com/aniapi',
           prependBaseUrlToHref: false,
-          className: 'navbar-patreon-link',
+          className: 'icon fab fa-patreon',
           title: 'Patreon',
           position: 'right'
         },
         {
           to: 'https://github.com/AniAPI-Team/AniAPI',
           prependBaseUrlToHref: false,
-          className: 'navbar-github-link',
+          className: 'icon fab fa-github',
           title: 'Github',
           position: 'right'
         },
         {
           to: 'https://discord.gg/xQjZx5aWkR',
           prependBaseUrlToHref: false,
-          className: 'navbar-discord-link',
+          className: 'icon fab fa-discord',
           title: 'Join discord',
           position: 'right'
         }
@@ -150,6 +150,7 @@ module.exports = {
     '@docusaurus/theme-live-codeblock'
   ],
   scripts: [
+    'https://kit.fontawesome.com/4c4bb12a1a.js',
     'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js'
   ]
 };

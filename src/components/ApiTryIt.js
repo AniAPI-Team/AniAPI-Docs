@@ -13,6 +13,7 @@ export default function ApiTryIt(props) {
   const [changed, setChanged] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [timer, setTimer] = useState(null);
+  const [fetching, setFetching] = useState(false);
 
   const [url, setUrl] = useState('');
   const [json, setJson] = useState('');
@@ -91,6 +92,8 @@ export default function ApiTryIt(props) {
     let _json = '';
 
     try {
+      setFetching(true);
+
       let headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -107,12 +110,15 @@ export default function ApiTryIt(props) {
       _json = await response.json();
     }
     catch (ex) {
+      setFetching(false);
       setJson('// Something bad happened, check console (F12)');
       return;
     }
 
     setUrl(_uri);
     setJson(JSON.stringify(_json, null, 4));
+
+    setFetching(false);
   }
 
   if (props.items) {
@@ -197,8 +203,12 @@ export default function ApiTryIt(props) {
         <div className={styles.items}>
           {items}
         </div>
-        <CodeBlock className="language-js"
-          title={url}>{json}</CodeBlock>
+        <div className={styles.codeBlockContainer}>
+          {fetching && (
+            <i className={'fas fa-spinner fa-pulse ' + styles.loading}></i>
+          )}
+          <CodeBlock className="language-js" title={url}>{json}</CodeBlock>
+        </div>
       </div>
     </div>
   );
