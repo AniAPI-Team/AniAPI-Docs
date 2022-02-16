@@ -43,6 +43,12 @@ Unique identifier for an Anime.
 
 ---
 
+#### tmdb_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+***[TheMovieDatabase](https://www.themoviedb.org/)*** external unique identifier.
+
+---
+
 #### format <Highlight bgColor="#8D46B8" color="white" content="enum" />
 
 The show's format destination.
@@ -93,6 +99,22 @@ The show's global release date.
 #### end_date <Highlight bgColor="#8D46B8" color="white" content="date" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
 
 The known show's global end date.
+
+---
+
+#### weekly_airing_day <Highlight bgColor="#8D46B8" color="white" content="enum" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+The known show's episode release day.
+
+```js title="Possible day enum values"
+"Sunday": 0,
+"Monday": 1,
+"Tuesday": 2,
+"Wednesday": 3,
+"Thursday": 4,
+"Friday": 5,
+"Saturday": 6
+```
 
 ---
 
@@ -161,6 +183,35 @@ The show's banner image.
 A collection of the show's associated genres.
 You can find all possible values ***[here](https://api.aniapi.com/v1/resources/1.0/0)***.
 
+---
+
+#### sagas <Highlight bgColor="#8D46B8" color="white" content="array of objects" />
+
+A collection of the show's associated sagas.
+
+```js title="Saga's object structure"
+{
+  // Map of strings
+  // Contains the saga's title in variuos localizations
+  "titles": {}
+
+  // Map of strings
+  // Contains the saga's description in variuos localizations
+  "descriptions": {}
+
+  // Integer
+  // The saga's first episode number
+  "episode_from": 0
+
+  // Integer
+  // The saga's last episode number
+  "episode_to": 0
+
+  // Integer
+  // The saga's total episodes count
+  "episodes_count": 0
+}
+```
 ---
 
 #### sequel <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
@@ -306,6 +357,12 @@ A filter on the list based on the `mal_id` field value.
 
 ---
 
+#### tmdb_id <Highlight bgColor="#8D46B8" color="white" content="integer" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list based on the `tmdb_id` field value.
+
+---
+
 #### formats <Highlight bgColor="#8D46B8" color="white" content="array of enums" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
 
 A filter on the list based on the `format` field value.
@@ -342,6 +399,12 @@ A filter on the list which excludes Anime classified as **Not Safe For Work**.
 
 ---
 
+#### with_episodes <Highlight bgColor="#8D46B8" color="white" content="bool" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="optional" />
+
+A filter on the list which excludes Anime without episodes available.
+
+---
+
 ### Returns
 
 Returns an array of Anime objects with a size based on the filter provided.
@@ -352,12 +415,14 @@ export const getListAnimeParams = [
   { name: 'title', type: 'text', placeholder: 'title', value: 'One Piece' },
   { name: 'anilist_id', type: 'number', placeholder: 'anilist_id', value: '' },
   { name: 'mal_id', type: 'number', placeholder: 'mal_id', value: '' },
+  { name: 'tmdb_id', type: 'number', placeholder: 'tmdb_id', value: '' },
   { name: 'formats', type: 'text', placeholder: 'formats', value: '0,1' },
   { name: 'status', type: 'text', placeholder: 'status', value: '1' },
   { name: 'year', type: 'number', placeholder: 'year', value: '1999' },
   { name: 'season', type: 'text', placeholder: 'season', value: '3' },
   { name: 'genres', type: 'text', placeholder: 'genres', value: 'Pirates,War,Cyborg' },
   { name: 'nsfw', type: 'checkbox', placeholder: 'nsfw', value: true },
+  { name: 'with_episodes', type: 'checkbox', placeholder: 'with_episodes', value: false },
 ];
 
 <ApiTryIt items={getListAnimeParams} uri={endpoints[1].uri} />
