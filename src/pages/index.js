@@ -59,6 +59,12 @@ export default function Home() {
   ];
 
   const apps = [
+    {
+      name:'AnimeApp',
+      description: 'Es una aplicación simple de busqueda de animes y canciones de anime con sus trailer hecha en react.js',
+      preview: 'https://e7.pngegg.com/pngimages/596/798/png-clipart-cartoon-stickers-cartoon-anime.png',
+      url: 'https://anime-app-final.herokuapp.com/'
+    },
     /*
     REFER TO THIS EXAMPLE. PLEASE LEAVE IT HERE, DO NOT CLEAR IT!
     {
