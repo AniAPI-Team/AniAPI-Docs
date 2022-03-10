@@ -166,6 +166,12 @@ The show's cover image.
 
 ---
 
+#### has_cover_image <Highlight bgColor="#8D46B8" color="white" content="bool" />
+
+Indicates if the show has an a cover images associated with it.
+
+---
+
 ##### cover_color <Highlight bgColor="#8D46B8" color="white" content="string" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
 
 The show's cover main color, in `HEX` format.
@@ -185,7 +191,7 @@ You can find all possible values ***[here](https://api.aniapi.com/v1/resources/1
 
 ---
 
-#### sagas <Highlight bgColor="#8D46B8" color="white" content="array of objects" />
+#### sagas <Highlight bgColor="#8D46B8" color="white" content="array of objects" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
 
 A collection of the show's associated sagas.
 
@@ -232,6 +238,12 @@ The show's global appreciation indicator. Minimum value is `0` and maximum is `1
 
 ---
 
+#### nsfw <Highlight bgColor="#8D46B8" color="white" content="bool" />
+
+Indicates if the show is marked as ***[NotSafeForWork](https://www.techopedia.com/definition/27847/not-safe-for-work-nsfw)***
+
+---
+
 ### Example
 
 ```js title="Anime object example"
@@ -241,16 +253,21 @@ The show's global appreciation indicator. Minimum value is `0` and maximum is `1
   "format": 0,
   "status": 1,
   "titles": {
-      "en": "One Piece",
-      "jp": "ワンピース",
-      "it": "One Piece"
+    "rj": "ONE PIECE",
+    "en": "ONE PIECE",
+    "jp": "ONE PIECE",
+    "fr": "One Piece",
+    "it": "One Piece"
   },
   "descriptions": {
-      "en": "Gold Roger was known as the Pirate Ki...",
-      "it": "Monkey D. Luffy (Nel doppiaggio itali..."
+    "en": "Gold Roger was known as the Pirate King, the strongest and mo...",
+    "fr": "Il fut un temps où Gold Roger était le plus grand de tous les...",
+    "it": "Monkey D. Rufy è un giovane pirata sognatore che da piccolo h...",
+    "jp": "海賊王を夢見る少年モンキー・D・ルフィを主人公とする、「ひとつなぎの..."
   },
   "start_date": "1999-10-20T00:00:00Z",
   "end_date": "1970-01-01T00:00:00Z",
+  "weekly_airing_day": 0,
   "season_period": 3,
   "season_year": 1999,
   "episodes_count": 981,
@@ -301,7 +318,27 @@ The show's global appreciation indicator. Minimum value is `0` and maximum is `1
       "Time Manipulation",
       "Kuudere"
   ],
+  "sagas": [{
+			"titles": {
+				"en": "East Blue Arc",
+				"fr": "Saga East Blue",
+				"it": "Saga del Mare Orientale",
+				"jp": "1st 東の海編"
+			},
+			"descriptions": {
+				"en": "Influenced by Shanks, Luffy starts his journey to become the ...",
+				"fr": "Influencé par Shanks, Luffy commence son voyage pour devenir ...",
+				"it": "La prima stagione si intitola Saga del Mare Orientale (EAST B...",
+				"jp": "ルフィは、たった１人の海賊として大海原へと旅立つ。海軍基地の..."
+			},
+			"episode_from": 1,
+			"episode_to": 61,
+			"episodes_count": 61
+		}, ...
+  ],
   "score": 86,
+  "nsfw": true,
+  "has_cover_image": true,
   "id": 11
 }
 ```
