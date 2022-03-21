@@ -165,6 +165,46 @@ export default function Home() {
             </svg>
           </Link>
         </section>
+        <section className={`${styles.homeSection} ${styles.supportersSection}`}>
+          <div className="container">
+            <h1>Our supporters</h1>
+            <p>AniAPI is able to reach out more developers with good performances thanks to our patrons...</p>
+            <div className={styles.supportersTiers}>
+              <div className={styles.supportersTier}>
+                <h3>Kawaii's</h3>
+                <span>Nick Geel</span>
+              </div>
+              <div className={styles.supportersTier}>
+                <h3>Onii/Onee-chan's</h3>
+                <span>-</span>
+              </div>
+              <div className={styles.supportersTier}>
+                <h3>Senpai's</h3>
+                <span>-</span>
+              </div>
+            </div>
+            <div className={styles.supportersTiers}>
+              <div className={styles.supportersTier}>
+                <h3>Sensei's</h3>
+                <span>-</span>
+              </div>
+              <div className={styles.supportersTier}>
+                <h3>Deredere's</h3>
+                <span>-</span>
+              </div>
+              <div className={styles.supportersTier}>
+                <h3>Waifu's</h3>
+                <span>-</span>
+              </div>
+            </div>
+            <Link
+              className="button button--secondary button--lg"
+              to="https://www.patreon.com/aniapi"
+              target="_blank">
+              Support us
+            </Link>
+          </div>
+        </section>
       </main>
     </Layout>
   );
