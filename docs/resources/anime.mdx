@@ -244,6 +244,12 @@ Indicates if the show is marked as ***[NotSafeForWork](https://www.techopedia.co
 
 ---
 
+#### recommendations <Highlight bgColor="#8D46B8" color="white" content="array of integers" /> <Highlight bgColor="rgb(40, 42, 54)" color="white" content="nullable" />
+
+The show's recommended Anime's unique identifier because similar. Ordered by descendent rating.
+
+---
+
 ### Example
 
 ```js title="Anime object example"
@@ -337,6 +343,14 @@ Indicates if the show is marked as ***[NotSafeForWork](https://www.techopedia.co
 		}, ...
   ],
   "score": 86,
+  "recommendations": [
+    2022, 
+    10, 
+    745, 
+    2974, 
+    147, 
+    416
+  ],
   "nsfw": true,
   "has_cover_image": true,
   "id": 11
