@@ -59,6 +59,12 @@ export default function Home() {
   ];
 
   const apps = [
+    {
+      name: 'Hibike',
+      description: 'A simple preview anisong website',
+      preview: 'https://github.com/Nemure231/My-Docs/blob/main/Upload/Hibike.png?raw=true',
+      url: 'https://hibike2.herokuapp.com'
+    }
     /*
     REFER TO THIS EXAMPLE. PLEASE LEAVE IT HERE, DO NOT CLEAR IT!
     {
